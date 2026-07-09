@@ -1,0 +1,173 @@
+// Commons
+
+//Breakpoint
+$desktop: 1440px;
+$tablet: 768px;
+$mobile: 640px;
+
+//colors
+$primaryColor: #323232;
+$secColor: #fffff7;
+
+// Typography
+@font-face {
+  font-family: 'PP Mori';
+  src:url('../fonts/PPMori-Regular.woff2') format('woff2'),
+      url('../fonts/PPMori-Regular.woff') format('woff'),
+      url('../fonts/PPMori-Regular.ttf') format('ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'PP Mori';
+  src:url('../fonts/PPMori-Semibold.woff2') format('woff2'),
+      url('../fonts/PPMori-Semibold.woff') format('woff'),
+      url('../fonts/PPMori-Semibold.ttf') format('ttf');
+  font-weight: 500;
+}
+
+.s-large { 
+  font-size: 60px;
+}
+
+.s-big {
+  font-size: 40px;
+}
+
+.s-medium { 
+  font-size: 30px;
+}
+
+.s-regular {
+	font-size: 22px;
+}
+
+.s-small {
+  font-size: 18px;
+}
+
+.s-xsmall {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+
+// =============================
+// GRID SYSTEM
+// =============================
+
+$spacing: 48px;
+$half-spacing: $spacing / 2;
+$double-spacing: $spacing * 2;
+$triple-spacing: $spacing * 3;
+$fourfold-spacing: $spacing * 4;
+
+$col: 8.3333%; // 12 columns
+
+// =============================
+// COLUMN SYSTEM (12 grid)
+// =============================
+
+// genera .d-1-twelfth → .d-11-twelfth
+@for $i from 1 through 11 {
+  .d-#{$i}-twelfth {
+    width: calc(#{$col} * #{$i} - #{$spacing});
+    margin: 0 #{$half-spacing};
+  }
+}
+
+// alias semantici
+$d-aliases: (
+  one-third: 4,
+  half: 6,
+  two-thirds: 8
+);
+
+@each $name, $val in $d-aliases {
+  .d-#{$name} {
+    width: calc(#{$col} * #{$val} - #{$spacing});
+    margin: 0 #{$half-spacing};
+  }
+}
+
+.d-whole {
+  width: calc(100% - #{$spacing});
+  margin: 0 #{$half-spacing};
+}
+
+
+// =============================
+// SPACING SCALE MAP
+// =============================
+
+$spacing-scale: (
+  0: 0,
+  half: $half-spacing / 2,
+  1: $half-spacing,
+  2: $spacing,
+  3: $half-spacing * 3,
+  4: $double-spacing,
+  5: $half-spacing * 5,
+  6: $triple-spacing
+);
+
+
+// =============================
+// MIXIN GENERATOR
+// =============================
+@mixin generate-spacing($prefix, $property) {
+  @each $key, $value in $spacing-scale {
+    .#{$prefix}-#{$key} {
+      #{$property}: $value;
+    }
+  }
+}
+
+
+// =============================
+// DESKTOP SPACING
+// =============================
+
+// margin bottom
+@include generate-spacing("spacing-b", margin-bottom);
+
+// margin top
+@include generate-spacing("spacing-t", margin-top);
+
+// padding bottom
+@include generate-spacing("spacing-p-b", padding-bottom);
+
+// padding top
+@include generate-spacing("spacing-p-t", padding-top);
+
+
+// =============================
+// TABLET
+// =============================
+
+@media screen and (max-width: $tablet) {
+
+  @include generate-spacing("spacing-t-b", margin-bottom);
+  @include generate-spacing("spacing-t-t", margin-top);
+  @include generate-spacing("spacing-t-p-b", padding-bottom);
+  @include generate-spacing("spacing-t-p-t", padding-top);
+
+}
+
+
+// =============================
+// MOBILE
+// =============================
+
+@media screen and (max-width: $mobile) {
+
+  @include generate-spacing("spacing-m-b", margin-bottom);
+  @include generate-spacing("spacing-m-t", margin-top);
+  @include generate-spacing("spacing-m-p-b", padding-bottom);
+  @include generate-spacing("spacing-m-p-t", padding-top);
+
+}
