@@ -1,8 +1,6 @@
-	<div id="footer">
-		© <?php the_time('Y'); ?> <?php bloginfo('name'); ?><br /> 
-	</div>
-	 
-	</div>
+	<footer>
+	</footer>
+</div>
 
 <?php wp_footer(); ?>
 

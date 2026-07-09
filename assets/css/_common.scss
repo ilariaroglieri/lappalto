@@ -11,48 +11,18 @@ $secColor: #fffff7;
 
 // Typography
 @font-face {
-  font-family: 'PP Mori';
-  src:url('../fonts/PPMori-Regular.woff2') format('woff2'),
-      url('../fonts/PPMori-Regular.woff') format('woff'),
-      url('../fonts/PPMori-Regular.ttf') format('ttf');
+  font-family: 'Diplomat';
+  src:url('../fonts/DiplomatST-Regular.woff2') format('woff2'),
+      url('../fonts/DiplomatST-Regular.woff') format('woff');
   font-weight: 400;
 }
 
-@font-face {
-  font-family: 'PP Mori';
-  src:url('../fonts/PPMori-Semibold.woff2') format('woff2'),
-      url('../fonts/PPMori-Semibold.woff') format('woff'),
-      url('../fonts/PPMori-Semibold.ttf') format('ttf');
-  font-weight: 500;
-}
-
-.s-large { 
-  font-size: 60px;
-}
-
-.s-big {
-  font-size: 40px;
-}
-
-.s-medium { 
-  font-size: 30px;
-}
-
 .s-regular {
-	font-size: 22px;
+	font-size: clamp(18px, 1.3vw, 15px);
 }
 
 .s-small {
-  font-size: 18px;
-}
-
-.s-xsmall {
-  font-size: 11px;
-  font-weight: 500;
-}
-
-.uppercase {
-  text-transform: uppercase;
+  font-size: clamp(15px, 1.1vw, 12px);
 }
 
 
@@ -60,7 +30,7 @@ $secColor: #fffff7;
 // GRID SYSTEM
 // =============================
 
-$spacing: 48px;
+$spacing: 12px;
 $half-spacing: $spacing / 2;
 $double-spacing: $spacing * 2;
 $triple-spacing: $spacing * 3;
