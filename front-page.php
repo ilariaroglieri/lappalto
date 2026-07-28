@@ -2,7 +2,7 @@
 
 <main>
   <?php if ( have_posts() ) : ?>
-    <div id="content-home" class="d-flex d-column space-between grow">
+    <div id="content-home" class="content d-flex d-column space-between grow">
       <?php  while ( have_posts() ) : the_post(); ?>
 
         <div class="intro-text">

@@ -5,7 +5,7 @@
     <?php 
       $today = new DateTime(date('Y-m-d'), new DateTimeZone('UTC'));
     ?>
-    <div id="content-exhibitions">
+    <div id="content-exhibitions" class="content">
       <?php while ( have_posts() ) : the_post(); ?>
 
         <?php 
@@ -37,7 +37,9 @@
               <h3 class="entry-artists"><?= get_field('artist'); ?></h3>
             </div>
             <div class="d-3-twelfth">
-              <a href="<?= $file['url'] ?>" class="entry-download">Download PDF</a>
+              <?php if ($file): ?>
+                <a href="<?= $file['url'] ?>" class="entry-download">Download PDF</a>
+              <?php endif; ?>
             </div>
           </div>
         </article>

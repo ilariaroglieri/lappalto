@@ -146,6 +146,10 @@ body {
 
 p {
 	margin:0;
+  margin-bottom: $spacing;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 h1, h2, h3, h4 {
@@ -204,6 +208,30 @@ header {
 
 main {
   display: contents;
+  opacity: 0;
+  transition: opacity .5s;
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+.content {
+  margin-bottom: $half-spacing*3;
+}
+
+#content-home {
+  margin-bottom: $spacing;
+  .intro-text {
+    margin-top: 45vh;
+    transform: translateY(-50%);
+  }
+}
+
+#content-exhibitions {
+  margin-top: 45vh;
+  .exhibition-row {
+    cursor: pointer;
+  }
 }
 
 #overlay-container {
@@ -247,28 +275,5 @@ main {
     }
   }
 } 
-
-main {
-  opacity: 0;
-  transition: opacity .5s;
-  &.loaded {
-    opacity: 1;
-  }
-}
-
-#content-home {
-  margin-bottom: $spacing;
-  .intro-text {
-    margin-top: 45vh;
-    transform: translateY(-50%);
-  }
-}
-
-#content-exhibitions {
-  margin-top: 45vh;
-  .exhibition-row {
-    cursor: pointer;
-  }
-}
 
 @import 'media-queries';
