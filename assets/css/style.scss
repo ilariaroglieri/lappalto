@@ -150,7 +150,7 @@ p {
 
 h1, h2, h3, h4 {
   font-weight: normal;
-  line-height: 1;
+  line-height: 1.2;
   @extend .s-small;
 }
 
@@ -173,9 +173,9 @@ li {
 }
 
 .container {
-  width: calc(100% - #{$double-spacing});
-  margin-left: $spacing;
-  margin-right: $spacing;
+  width: calc(100% - #{$half-spacing}*6);
+  margin-left: $half-spacing*3;
+  margin-right: $half-spacing*3;
 }
 
 .container-fluid {
@@ -259,4 +259,9 @@ main {
     opacity: 1;
   }
 }
+
+main#content-exhibitions {
+  margin-top: 40%;
+}
+
 @import 'media-queries';

@@ -1,6 +1,6 @@
 {
     "key": "group_6a4faa4fee43c",
-    "title": "Projects CF",
+    "title": "Exhibitions CF",
     "fields": [
         {
             "key": "field_6a4faa50f1916",
@@ -24,23 +24,39 @@
         },
         {
             "key": "field_6a4faa87f1917",
-            "label": "Event date",
-            "name": "event_date",
+            "label": "Starting date",
+            "name": "starting_date",
             "aria-label": "",
-            "type": "text",
+            "type": "date_picker",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "display_format": "d\/m\/Y",
+            "return_format": "j F Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_6a68c8f623536",
+            "label": "Ending date",
+            "name": "ending_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "j F Y",
+            "first_day": 1
         },
         {
             "key": "field_6a4faaafd66cb",
@@ -84,5 +100,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1783605966
+    "modified": 1785252187
 }
