@@ -202,12 +202,8 @@ header {
   }
 }
 
-#content-home {
-  margin-bottom: $spacing;
-  .intro-text {
-    margin-top: 45vh;
-    transform: translateY(-50%);
-  }
+main {
+  display: contents;
 }
 
 #overlay-container {
@@ -260,8 +256,19 @@ main {
   }
 }
 
-main#content-exhibitions {
-  margin-top: 40%;
+#content-home {
+  margin-bottom: $spacing;
+  .intro-text {
+    margin-top: 45vh;
+    transform: translateY(-50%);
+  }
+}
+
+#content-exhibitions {
+  margin-top: 45vh;
+  .exhibition-row {
+    cursor: pointer;
+  }
 }
 
 @import 'media-queries';

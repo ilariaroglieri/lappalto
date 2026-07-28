@@ -484,11 +484,8 @@ ul {
   margin-left: -6px;
   position: relative; }
 
-#content-home {
-  margin-bottom: 12px; }
-  #content-home .intro-text {
-    margin-top: 45vh;
-    transform: translateY(-50%); }
+main {
+  display: contents; }
 
 #overlay-container {
   top: 0;
@@ -527,8 +524,16 @@ main {
   main.loaded {
     opacity: 1; }
 
-main#content-exhibitions {
-  margin-top: 40%; }
+#content-home {
+  margin-bottom: 12px; }
+  #content-home .intro-text {
+    margin-top: 45vh;
+    transform: translateY(-50%); }
+
+#content-exhibitions {
+  margin-top: 45vh; }
+  #content-exhibitions .exhibition-row {
+    cursor: pointer; }
 
 @media screen and (max-width: 768px) {
   .t-hidden {
