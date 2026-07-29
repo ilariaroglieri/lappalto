@@ -220,10 +220,16 @@ main {
   &.loaded {
     opacity: 1;
   }
+  a {
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+.content:not(#content-exhibitions) {
+  min-height: 100%;
 }
 
 #content-home {
-  min-height: 100%;
   margin-bottom: $spacing;
   .intro-text {
     margin-top: 45vh;
@@ -266,21 +272,31 @@ div[class*=embla-slider] {
 }
 
 #content-exhibitions {
-  margin-top: 45vh;
+  padding-top: 45vh;
+  padding-bottom: $spacing;
   .exhibition-element {
     .exhibition-row-header {
-      cursor: pointer;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-areas: "cat title artists download";
+      column-gap: $spacing;
+      cursor: default;
+      .row-btn {
+        cursor: pointer;
+      }
     }
     .exhibition-carousel-row { 
       --slide-spacing: #{$spacing};
       max-height: 0;
       opacity: 0;
       margin: 0;
+      overflow: hidden;
       transition: all .5s ease;
       &.open {
         max-height: 50vh;
         opacity: 1;
         margin: $spacing 0;
+        overflow: visible;
       }
       .embla-slider {
         width: calc(100% + #{$half-spacing}*6);
@@ -310,10 +326,9 @@ div[class*=embla-slider] {
   }
 }
 
-
 #site_logo {
   position: fixed;
-  width: clamp(10vw, 10vw, 80px);
+  width: clamp(80px, 10vw, 10vw);
   bottom: $spacing;
   right: $spacing;
 }

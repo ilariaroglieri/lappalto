@@ -38,84 +38,89 @@ function applyPositions() {
   currentClasses = next;
 }
 
-// posizioni iniziali immediate
-applyPositions();
-
 // ----- SLIDER
 function getAutoplay() {
   return EmblaCarouselAutoplay({ delay: 4000, stopOnInteraction: false });
 }
 
+const isMobile = () => window.matchMedia('(max-width: 768px').matches;
+
 function initSliders() {
+  // _embla = custom property 
+
   // Home carousel (con fade)
   const homeCarousel = content.querySelector('.embla-slider-home');
   if (homeCarousel && !homeCarousel._embla) {
     homeCarousel._embla = EmblaCarousel(homeCarousel, {}, [getAutoplay(), EmblaCarouselFade()]);
   }
 
-  // Slider singolo (pagine normali)
+  // Slider singolo (querySelector pesca la prima istanza)
   const singleCarousel = content.querySelector('.embla-slider');
   if (singleCarousel && !singleCarousel._embla) {
-    singleCarousel._embla = EmblaCarousel(singleCarousel, {}, [getAutoplay()]);
+    if (isMobile()) {
+      singleCarousel._embla = EmblaCarousel(singleCarousel, {}, []);
+    } else {
+      singleCarousel._embla = EmblaCarousel(singleCarousel, {}, [getAutoplay()]);
+    }
   }
 
   // Accordion mostre: più slider, uno alla volta
   initMostreAccordion();
 }
 
-console.log('exhibitions:', document.querySelectorAll('.exhibition-element'));
-
-// 3. Per ognuno, cosa c'è dentro?
-document.querySelectorAll('.exhibition-element').forEach((row, i) => {
-  console.log(`--- riga ${i} ---`);
-  console.log('trigger (.entry-title):', row.querySelector('.entry-title'));
-  console.log('panel (.exhibition-carousel-row):', row.querySelector('.exhibition-carousel-row'));
-  console.log('slider (.embla-slider):', row.querySelector('.embla-slider'));
-});
-
 function initMostreAccordion() {
+
   const exhibitions = content.querySelectorAll('.exhibition-element');
   if (!exhibitions.length) return;
 
   exhibitions.forEach((row, index) => {
-    const trigger = row.querySelector('.entry-title'); 
+    const triggers = row.querySelectorAll('.row-btn'); 
     const carouselRow = row.querySelector('.exhibition-carousel-row');
     const sliderEl = carouselRow?.querySelector('.embla-slider');
 
-       console.log(trigger, carouselRow, sliderEl);
+    if (!triggers || !carouselRow || !sliderEl) return;
 
-    if (!trigger || !carouselRow || !sliderEl) return;
-
-    // Apri il primo, chiudi gli altri
-    if (index === 0) {
+    if (isMobile()) {
+      console.log('is mobile');
+      // su mobile: tutti aperti, no autoplay
       carouselRow.classList.add('open');
       if (!sliderEl._embla) {
-        sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
+        sliderEl._embla = EmblaCarousel(sliderEl, {}, []);
       }
     } else {
-      carouselRow.classList.remove('open');
-    }
-
-    trigger.addEventListener('click', () => {
-      const isAlreadyOpen = carouselRow.classList.contains('open');
-
-      // Chiudi tutti e distruggi i loro embla
-      exhibitions.forEach(r => {
-        const p = r.querySelector('.exhibition-carousel-row');
-        const s = p?.querySelector('.embla-slider');
-        if (p) p.classList.remove('open');
-        if (s?._embla) {
-          s._embla.destroy();
-          s._embla = null;
-        }
-      });
-
-      // Se non era già aperta, apri questa e inizializza embla
-      if (!isAlreadyOpen) {
+    // Apri il primo, chiudi gli altri
+      if (index === 0) {
         carouselRow.classList.add('open');
-        sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
+        if (!sliderEl._embla) {
+          sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
+        }
+      } else {
+        carouselRow.classList.remove('open');
       }
-    });
+
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const isAlreadyOpen = carouselRow.classList.contains('open');
+
+          // Chiudi tutti e distruggi i loro embla
+          exhibitions.forEach(r => {
+            const p = r.querySelector('.exhibition-carousel-row');
+            const s = p?.querySelector('.embla-slider');
+            if (p) p.classList.remove('open');
+            if (s?._embla) {
+              s._embla.destroy();
+              s._embla = null;
+            }
+          });
+
+          // Se non era già aperta, apri questa e inizializza embla
+          if (!isAlreadyOpen) {
+            carouselRow.classList.add('open');
+            sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
+          }
+        });
+      });
+    };
   });
 }
 
@@ -160,6 +165,9 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
 //----- loading content
 document.addEventListener('DOMContentLoaded', () => {
   EmblaCarousel.globalOptions = { loop: true, align: 'start' };
+
+  // posizioni iniziali immediate
+  applyPositions();
 
   content.classList.add('loaded');
   initSliders();

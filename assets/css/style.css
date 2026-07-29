@@ -499,9 +499,13 @@ main {
   min-height: calc(100dvh - 12px*3); }
   main.loaded {
     opacity: 1; }
+  main a {
+    border-bottom: 1px solid currentColor; }
+
+.content:not(#content-exhibitions) {
+  min-height: 100%; }
 
 #content-home {
-  min-height: 100%;
   margin-bottom: 12px; }
   #content-home .intro-text {
     margin-top: 45vh;
@@ -531,19 +535,28 @@ div[class*=embla-slider] {
       min-width: 0; }
 
 #content-exhibitions {
-  margin-top: 45vh; }
+  padding-top: 45vh;
+  padding-bottom: 12px; }
   #content-exhibitions .exhibition-element .exhibition-row-header {
-    cursor: pointer; }
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "cat title artists download";
+    column-gap: 12px;
+    cursor: default; }
+    #content-exhibitions .exhibition-element .exhibition-row-header .row-btn {
+      cursor: pointer; }
   #content-exhibitions .exhibition-element .exhibition-carousel-row {
     --slide-spacing: 12px;
     max-height: 0;
     opacity: 0;
     margin: 0;
+    overflow: hidden;
     transition: all .5s ease; }
     #content-exhibitions .exhibition-element .exhibition-carousel-row.open {
       max-height: 50vh;
       opacity: 1;
-      margin: 12px 0; }
+      margin: 12px 0;
+      overflow: visible; }
     #content-exhibitions .exhibition-element .exhibition-carousel-row .embla-slider {
       width: calc(100% + 6px*6);
       transform: translateX(calc(6px * -3 )); }
@@ -565,7 +578,7 @@ div[class*=embla-slider] {
 
 #site_logo {
   position: fixed;
-  width: clamp(10vw, 10vw, 80px);
+  width: clamp(80px, 10vw, 10vw);
   bottom: 12px;
   right: 12px; }
 
@@ -624,7 +637,19 @@ div[class*=embla-slider] {
   .t-half {
     width: calc(50% - 12px);
     margin-left: 6px;
-    margin-right: 6px; } }
+    margin-right: 6px; }
+
+  #content-exhibitions .exhibition-element .exhibition-row-header {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "cat      artists" "title    artists" "download artists"; }
+    #content-exhibitions .exhibition-element .exhibition-row-header .entry-cat-el {
+      grid-area: cat; }
+    #content-exhibitions .exhibition-element .exhibition-row-header .entry-title-el {
+      grid-area: title; }
+    #content-exhibitions .exhibition-element .exhibition-row-header .entry-artists-el {
+      grid-area: artists; }
+    #content-exhibitions .exhibition-element .exhibition-row-header .entry-download-el {
+      grid-area: download; } }
 @media screen and (max-width: 640px) {
   .m-hidden {
     display: none; }
@@ -647,6 +672,41 @@ div[class*=embla-slider] {
     width: calc(50% - 12px);
     margin-left: 6px;
     margin-right: 6px;
-    margin-bottom: 24px; } }
+    margin-bottom: 24px; }
+
+  main {
+    min-height: calc(100dvh - 24px*2); }
+
+  header {
+    margin-top: 12px; }
+
+  #content-home .current-exhibition {
+    order: 1;
+    padding-top: calc(100dvh - 150px);
+    padding-bottom: 24px; }
+  #content-home .intro-text {
+    order: 2;
+    margin-top: 0;
+    transform: translateX(0);
+    padding-bottom: 24px; }
+
+  #content-exhibitions {
+    padding-top: 0; }
+    #content-exhibitions .exhibition-element .exhibition-row-header {
+      grid-template-columns: 1fr;
+      grid-template-areas: "cat" "title" "artists" "download"; }
+    #content-exhibitions .exhibition-element .exhibition-carousel-row {
+      --slide-spacing: 12px;
+      max-height: unset;
+      opacity: 1;
+      margin: 12px 0;
+      overflow: visible; }
+      #content-exhibitions .exhibition-element .exhibition-carousel-row .embla-slider .embla-slide.portrait {
+        --slide-size: calc(6/12 * 100%); }
+      #content-exhibitions .exhibition-element .exhibition-carousel-row .embla-slider .embla-slide.landscape {
+        --slide-size: calc(10/12 * 100%); }
+
+  footer {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -9,6 +9,7 @@
       <?php while ( have_posts() ) : the_post(); ?>
 
         <?php 
+          $i = $wp_query->current_post + 1;
           $startD = DateTime::createFromFormat('Ymd', get_field('starting_date', false, false));
           $endD = DateTime::createFromFormat('Ymd', get_field('ending_date', false, false));
 
@@ -25,28 +26,30 @@
           endif;
         ?>
 
+        <?php // home carousel
+          $carousel = get_field('carousel'); 
+        ?>
+
         <article id="post-<?php the_ID(); ?>" <?php post_class('exhibition-element'); ?> data-status="<?= $status ?>">
-          <div class="exhibition-row-header d-flex flex-row">
-            <div class="d-3-twelfth">
-              <h2 class="entry-cat acc-btn"><?= $status == 'ongoing' ? 'Ongoing / ' : '' ?><?= implode( ', ', array_column( $cats, 'name' ) ); ?></h2>
+          <div class="exhibition-row-header">
+            <div class="entry-cat-el">
+              <h2 class="entry-cat <?= $carousel ? 'row-btn' : ''?>"><?= $status == 'ongoing' ? 'Ongoing / ' : sprintf("%02d", $i) .'. ' ?><?= implode( ', ', array_column( $cats, 'name' ) ); ?></h2>
             </div>
-            <div class="d-3-twelfth">
-              <h3 class="entry-title acc-btn"><?php the_title(); ?></h3>
+            <div class="entry-title-el">
+              <h3 class="entry-title <?= $carousel ? 'row-btn' : ''?>"><?php the_title(); ?></h3>
             </div>
-            <div class="d-3-twelfth">
-              <h3 class="entry-artists acc-btn"><?= get_field('artist'); ?></h3>
+            <div class="entry-artists-el">
+              <h3 class="entry-artists <?= $carousel ? 'row-btn' : ''?>"><?= get_field('artist'); ?></h3>
             </div>
-            <div class="d-3-twelfth">
+            <div class="entry-download-el">
               <?php if ($file): ?>
                 <a href="<?= $file['url'] ?>" class="entry-download">Download PDF</a>
               <?php endif; ?>
             </div>
           </div>
 
-          <?php // home carousel
-          $carousel = get_field('carousel'); 
 
-          if ($carousel): ?>
+          <?php if ($carousel): ?>
             <div class="exhibition-carousel-row <?= $status == 'ongoing' ? 'open' : ''; ?>">
               <div class="embla-slider">
                 <div class="embla-track">
