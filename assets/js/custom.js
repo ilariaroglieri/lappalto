@@ -41,6 +41,85 @@ function applyPositions() {
 // posizioni iniziali immediate
 applyPositions();
 
+// ----- SLIDER
+function getAutoplay() {
+  return EmblaCarouselAutoplay({ delay: 4000, stopOnInteraction: false });
+}
+
+function initSliders() {
+  // Home carousel (con fade)
+  const homeCarousel = content.querySelector('.embla-slider-home');
+  if (homeCarousel && !homeCarousel._embla) {
+    homeCarousel._embla = EmblaCarousel(homeCarousel, {}, [getAutoplay(), EmblaCarouselFade()]);
+  }
+
+  // Slider singolo (pagine normali)
+  const singleCarousel = content.querySelector('.embla-slider');
+  if (singleCarousel && !singleCarousel._embla) {
+    singleCarousel._embla = EmblaCarousel(singleCarousel, {}, [getAutoplay()]);
+  }
+
+  // Accordion mostre: più slider, uno alla volta
+  initMostreAccordion();
+}
+
+console.log('exhibitions:', document.querySelectorAll('.exhibition-element'));
+
+// 3. Per ognuno, cosa c'è dentro?
+document.querySelectorAll('.exhibition-element').forEach((row, i) => {
+  console.log(`--- riga ${i} ---`);
+  console.log('trigger (.entry-title):', row.querySelector('.entry-title'));
+  console.log('panel (.exhibition-carousel-row):', row.querySelector('.exhibition-carousel-row'));
+  console.log('slider (.embla-slider):', row.querySelector('.embla-slider'));
+});
+
+function initMostreAccordion() {
+  const exhibitions = content.querySelectorAll('.exhibition-element');
+  if (!exhibitions.length) return;
+
+  exhibitions.forEach((row, index) => {
+    const trigger = row.querySelector('.entry-title'); 
+    const carouselRow = row.querySelector('.exhibition-carousel-row');
+    const sliderEl = carouselRow?.querySelector('.embla-slider');
+
+       console.log(trigger, carouselRow, sliderEl);
+
+    if (!trigger || !carouselRow || !sliderEl) return;
+
+    // Apri il primo, chiudi gli altri
+    if (index === 0) {
+      carouselRow.classList.add('open');
+      if (!sliderEl._embla) {
+        sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
+      }
+    } else {
+      carouselRow.classList.remove('open');
+    }
+
+    trigger.addEventListener('click', () => {
+      const isAlreadyOpen = carouselRow.classList.contains('open');
+
+      // Chiudi tutti e distruggi i loro embla
+      exhibitions.forEach(r => {
+        const p = r.querySelector('.exhibition-carousel-row');
+        const s = p?.querySelector('.embla-slider');
+        if (p) p.classList.remove('open');
+        if (s?._embla) {
+          s._embla.destroy();
+          s._embla = null;
+        }
+      });
+
+      // Se non era già aperta, apri questa e inizializza embla
+      if (!isAlreadyOpen) {
+        carouselRow.classList.add('open');
+        sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
+      }
+    });
+  });
+}
+
+// ----- DYNAMIC PAGE LOAD
 async function navigateTo(url) {
   applyPositions();
   // content.classList.remove('fadein');
@@ -57,6 +136,8 @@ async function navigateTo(url) {
   content.innerHTML = newDoc.querySelector('main').innerHTML;
   history.pushState({}, '', url);
   
+  // re-init sliders
+  initSliders();
 }
 
 // intercetta i link del menu
@@ -74,26 +155,12 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
   li.classList.add('current_page_item');
 });
 
-// ----- SLIDER
-document.addEventListener('DOMContentLoaded', () => {
-  // global variables
-  EmblaCarousel.globalOptions = { loop: true, align: 'start' }
-  const getAutoplay = () => EmblaCarouselAutoplay({ delay: 4000, stopOnInteraction: false })
 
-
-  const homeCarousel = document.querySelector('.embla-slider-home')
-  const carousel = document.querySelector('.embla-slider')
-
-  if (homeCarousel) {
-    EmblaCarousel(homeCarousel, {}, [getAutoplay(), EmblaCarouselFade()])
-  }
-
-  if (carousel) {
-    EmblaCarousel(carousel, {}, [getAutoplay()])
-  }
-})
 
 //----- loading content
 document.addEventListener('DOMContentLoaded', () => {
+  EmblaCarousel.globalOptions = { loop: true, align: 'start' };
+
   content.classList.add('loaded');
+  initSliders();
 })

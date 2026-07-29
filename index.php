@@ -25,16 +25,16 @@
           endif;
         ?>
 
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> data-status="<?= $status ?>">
-          <div class="exhibition-row d-flex flex-row">
+        <article id="post-<?php the_ID(); ?>" <?php post_class('exhibition-element'); ?> data-status="<?= $status ?>">
+          <div class="exhibition-row-header d-flex flex-row">
             <div class="d-3-twelfth">
-              <h2 class="entry-cat"><?= $status == 'ongoing' ? 'Ongoing / ' : '' ?><?= implode( ', ', array_column( $cats, 'name' ) ); ?></h2>
+              <h2 class="entry-cat acc-btn"><?= $status == 'ongoing' ? 'Ongoing / ' : '' ?><?= implode( ', ', array_column( $cats, 'name' ) ); ?></h2>
             </div>
             <div class="d-3-twelfth">
-              <h3 class="entry-title"><?php the_title(); ?></h3>
+              <h3 class="entry-title acc-btn"><?php the_title(); ?></h3>
             </div>
             <div class="d-3-twelfth">
-              <h3 class="entry-artists"><?= get_field('artist'); ?></h3>
+              <h3 class="entry-artists acc-btn"><?= get_field('artist'); ?></h3>
             </div>
             <div class="d-3-twelfth">
               <?php if ($file): ?>
@@ -47,10 +47,10 @@
           $carousel = get_field('carousel'); 
 
           if ($carousel): ?>
-            <div class="exhibition-carousel-row spacing-t-2 spacing-b-3">
+            <div class="exhibition-carousel-row <?= $status == 'ongoing' ? 'open' : ''; ?>">
               <div class="embla-slider">
                 <div class="embla-track">
-                  <?php foreach( $carousel as $img ): 
+                  <?php foreach( $carousel as $i => $img ):
                     $orientation = $img['width'] > $img['height'] ? 'landscape' : 'portrait'; ?>
                     <div class="embla-slide <?= $orientation ?>">
                       <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
