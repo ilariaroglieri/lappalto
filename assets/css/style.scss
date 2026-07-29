@@ -159,11 +159,13 @@ h1, h2, h3, h4 {
 }
 
 a {
-  color:$primaryColor;
+  color:currentColor;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom .3s;
   &:hover {
-    color: $primaryColor;
-    border-bottom: 1px solid;
+    color: currentColor;
+    border-bottom: 1px solid currentColor;
   }
 }
 
@@ -201,6 +203,10 @@ header {
       @extend .flex-row;
       li {
         @extend .d-3-twelfth;
+        &.current_page_item a {
+          pointer-events: none;
+          border-bottom: 1px solid currentColor;
+        }
       }
     }
   }
@@ -232,6 +238,13 @@ main {
   .exhibition-row {
     cursor: pointer;
   }
+}
+
+#site_logo {
+  position: fixed;
+  width: clamp(10vw, 10vw, 80px);
+  bottom: $spacing;
+  right: $spacing;
 }
 
 #overlay-container {
@@ -275,5 +288,35 @@ main {
     }
   }
 } 
+
+#home-slider {
+  top:0;
+  left: $half-spacing * 3;
+  z-index: -1;
+}
+
+.embla-slider {
+  overflow: hidden;
+  .embla-track {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+  }
+  .embla-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    height: 100dvh;
+    img {
+      object-fit: contain;
+      object-position: top center;
+      height: 100%;
+      width: 100%;
+      &.portrait {
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+
 
 @import 'media-queries';

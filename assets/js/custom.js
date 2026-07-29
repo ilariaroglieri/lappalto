@@ -1,3 +1,5 @@
+// ----- BARS BEHAVIOUR
+
 const pos = ['pos-1', 'pos-2', 'pos-3', 'pos-4'];
 const w = ['w-1', 'w-2', 'w-3', 'w-4'];
 const bars = document.querySelectorAll('.overlay-bar');
@@ -59,11 +61,27 @@ async function navigateTo(url) {
 
 // intercetta i link del menu
 document.querySelector('.menu-menu-1-container ul').addEventListener('click', e => {
+  const li = e.target.closest('li');
   const link = e.target.closest('a');
   if (!link) return;
   e.preventDefault();
   navigateTo(link.href);
+
+
+  document.querySelectorAll('.menu-menu-1-container ul li').forEach(el => {
+    el.classList.remove('current_page_item');
+  });
+  li.classList.add('current_page_item');
 });
 
-// loading content
-content.classList.add('loaded');
+// ----- SLIDER
+document.addEventListener('DOMContentLoaded', () => {
+  const viewportNode = document.querySelector('.embla-slider')
+  const autoplay = EmblaCarouselAutoplay({ delay: 4000, stopOnInteraction: false })
+  const emblaApi = EmblaCarousel(viewportNode, { loop: true }, [autoplay, EmblaCarouselFade()] )
+})
+
+//----- loading content
+document.addEventListener('DOMContentLoaded', () => {
+  content.classList.add('loaded');
+})

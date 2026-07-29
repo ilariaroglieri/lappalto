@@ -27,6 +27,11 @@
     margin-right: #{$half-spacing};
   }
 
+  .t-two-thirds {
+    width: calc(#{$col} * 8 - #{$spacing});
+    margin: 0 #{$half-spacing};
+  }
+
 
   .t-half {
     width: calc(50% - #{$spacing});

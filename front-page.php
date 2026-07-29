@@ -57,6 +57,27 @@
         endwhile;
         wp_reset_postdata(); ?>
 
+
+        <?php // home carousel
+        $carousel = get_field('home_carousel'); ?>
+
+        <div id="home-slider" class="p-fixed full-width"> 
+          <div class="d-flex flex-row">
+            <div class="d-5-twelfth t-two-thirds m-whole">
+
+              <div class="embla-slider">
+                <div class="embla-track">
+                  <?php foreach( $carousel as $img ): 
+                    $orientation = $img['width'] > $img['height'] ? 'landscape' : 'portrait'; ?>
+                    <div class="embla-slide">
+                      <img class="<?= $orientation; ?>" src="<?= esc_url($img['url']); ?>" />
+                    </div>
+                  <?php endforeach ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       
       <?php endwhile; ?>
     </div>

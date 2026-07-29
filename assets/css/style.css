@@ -461,11 +461,13 @@ h1, h2, h3, h4 {
   line-height: 1.2; }
 
 a {
-  color: #323232;
-  text-decoration: none; }
+  color: currentColor;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom .3s; }
   a:hover {
-    color: #323232;
-    border-bottom: 1px solid; }
+    color: currentColor;
+    border-bottom: 1px solid currentColor; }
 
 ul {
   margin: 0;
@@ -487,6 +489,10 @@ ul {
   margin-left: -6px;
   position: relative; }
 
+header div[class*="menu-1"] ul li.current_page_item a {
+  pointer-events: none;
+  border-bottom: 1px solid currentColor; }
+
 main {
   display: contents;
   opacity: 0;
@@ -507,6 +513,12 @@ main {
   margin-top: 45vh; }
   #content-exhibitions .exhibition-row {
     cursor: pointer; }
+
+#site_logo {
+  position: fixed;
+  width: clamp(10vw, 10vw, 80px);
+  bottom: 12px;
+  right: 12px; }
 
 #overlay-container {
   top: 0;
@@ -539,6 +551,28 @@ main {
     #overlay-container .overlay-bar.w-4 {
       width: 25vw; }
 
+#home-slider {
+  top: 0;
+  left: 18px;
+  z-index: -1; }
+
+.embla-slider {
+  overflow: hidden; }
+  .embla-slider .embla-track {
+    display: flex;
+    touch-action: pan-y pinch-zoom; }
+  .embla-slider .embla-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    height: 100dvh; }
+    .embla-slider .embla-slide img {
+      object-fit: contain;
+      object-position: top center;
+      height: 100%;
+      width: 100%; }
+      .embla-slider .embla-slide img.portrait {
+        object-fit: cover; }
+
 @media screen and (max-width: 768px) {
   .t-hidden {
     display: none; }
@@ -555,6 +589,10 @@ main {
     width: calc(100% - 12px);
     margin-left: 6px;
     margin-right: 6px; }
+
+  .t-two-thirds {
+    width: calc(8.3333% * 8 - 12px);
+    margin: 0 6px; }
 
   .t-half {
     width: calc(50% - 12px);
