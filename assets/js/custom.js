@@ -76,9 +76,21 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
 
 // ----- SLIDER
 document.addEventListener('DOMContentLoaded', () => {
-  const viewportNode = document.querySelector('.embla-slider')
-  const autoplay = EmblaCarouselAutoplay({ delay: 4000, stopOnInteraction: false })
-  const emblaApi = EmblaCarousel(viewportNode, { loop: true }, [autoplay, EmblaCarouselFade()] )
+  // global variables
+  EmblaCarousel.globalOptions = { loop: true, align: 'start' }
+  const getAutoplay = () => EmblaCarouselAutoplay({ delay: 4000, stopOnInteraction: false })
+
+
+  const homeCarousel = document.querySelector('.embla-slider-home')
+  const carousel = document.querySelector('.embla-slider')
+
+  if (homeCarousel) {
+    EmblaCarousel(homeCarousel, {}, [getAutoplay(), EmblaCarouselFade()])
+  }
+
+  if (carousel) {
+    EmblaCarousel(carousel, {}, [getAutoplay()])
+  }
 })
 
 //----- loading content

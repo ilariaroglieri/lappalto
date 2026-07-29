@@ -289,29 +289,61 @@ main {
   }
 } 
 
-#home-slider {
-  top:0;
-  left: $half-spacing * 3;
-  z-index: -1;
-}
-
-.embla-slider {
+div[class*=embla-slider] {
   overflow: hidden;
   .embla-track {
     display: flex;
     touch-action: pan-y pinch-zoom;
+    .embla-slide {
+      min-width: 0;
+    }
   }
-  .embla-slide {
-    flex: 0 0 100%;
-    min-width: 0;
-    height: 100dvh;
-    img {
-      object-fit: contain;
-      object-position: top center;
-      height: 100%;
-      width: 100%;
+}
+
+#home-slider {
+  top:0;
+  left: $half-spacing * 3;
+  z-index: -1;
+  .embla-slider-home {
+    .embla-slide {
+      flex: 0 0 100%;
+      height: 100dvh;
       &.portrait {
+        img {
+          object-fit: cover;
+        }
+      }
+      img {
+        object-fit: contain;
+        object-position: top center;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.exhibition-carousel-row {  
+  --slide-spacing: #{$spacing};
+  .embla-slider {
+    .embla-track {
+      margin-left: calc(var(--slide-spacing) * -1);
+    }
+    .embla-slide {
+      flex: 0 0 var(--slide-size);
+      padding-left: var(--slide-spacing);
+      &.portrait {
+        --slide-size: calc(2/12 * 100%);
+        aspect-ratio: .94/1;
+      }
+      &.landscape {
+        --slide-size: calc(3/12 * 100%);
+        aspect-ratio: 1.44/1;
+      }
+      img {
         object-fit: cover;
+        height: 100%;
+        width: 100%;
       }
     }
   }

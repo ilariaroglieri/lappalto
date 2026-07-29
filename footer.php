@@ -1,5 +1,5 @@
 	<footer>
-		<img id="site_logo" src="../wp-content/themes/lappalto-theme/assets/img/monogram_LA.svg" alt="L'appalto logo" />
+		<img id="site_logo" src="./wp-content/themes/lappalto-theme/assets/img/monogram_LA.svg" alt="L'appalto logo" />
 	</footer>
 
 	<div id="overlay-container" class="p-fixed full-height full-width">

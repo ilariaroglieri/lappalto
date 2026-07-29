@@ -42,6 +42,26 @@
               <?php endif; ?>
             </div>
           </div>
+
+          <?php // home carousel
+          $carousel = get_field('carousel'); 
+
+          if ($carousel): ?>
+            <div class="exhibition-carousel-row spacing-t-2 spacing-b-3">
+              <div class="embla-slider">
+                <div class="embla-track">
+                  <?php foreach( $carousel as $img ): 
+                    $orientation = $img['width'] > $img['height'] ? 'landscape' : 'portrait'; ?>
+                    <div class="embla-slide <?= $orientation ?>">
+                      <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
+                        'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
+                      ]) ?>
+                    </div>
+                  <?php endforeach ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
         </article>
       <?php endwhile; ?>
     </div>

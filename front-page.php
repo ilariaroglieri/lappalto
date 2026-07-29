@@ -65,12 +65,14 @@
           <div class="d-flex flex-row">
             <div class="d-5-twelfth t-two-thirds m-whole">
 
-              <div class="embla-slider">
+              <div class="embla-slider-home">
                 <div class="embla-track">
                   <?php foreach( $carousel as $img ): 
                     $orientation = $img['width'] > $img['height'] ? 'landscape' : 'portrait'; ?>
-                    <div class="embla-slide">
-                      <img class="<?= $orientation; ?>" src="<?= esc_url($img['url']); ?>" />
+                    <div class="embla-slide <?= $orientation ?>">
+                      <?= wp_get_attachment_image($img['ID'], 'full', false, [
+                        'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
+                      ]) ?>
                     </div>
                   <?php endforeach ?>
                 </div>

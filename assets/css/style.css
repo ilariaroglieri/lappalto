@@ -551,27 +551,46 @@ main {
     #overlay-container .overlay-bar.w-4 {
       width: 25vw; }
 
+div[class*=embla-slider] {
+  overflow: hidden; }
+  div[class*=embla-slider] .embla-track {
+    display: flex;
+    touch-action: pan-y pinch-zoom; }
+    div[class*=embla-slider] .embla-track .embla-slide {
+      min-width: 0; }
+
 #home-slider {
   top: 0;
   left: 18px;
   z-index: -1; }
-
-.embla-slider {
-  overflow: hidden; }
-  .embla-slider .embla-track {
-    display: flex;
-    touch-action: pan-y pinch-zoom; }
-  .embla-slider .embla-slide {
+  #home-slider .embla-slider-home .embla-slide {
     flex: 0 0 100%;
-    min-width: 0;
     height: 100dvh; }
-    .embla-slider .embla-slide img {
+    #home-slider .embla-slider-home .embla-slide.portrait img {
+      object-fit: cover; }
+    #home-slider .embla-slider-home .embla-slide img {
       object-fit: contain;
       object-position: top center;
       height: 100%;
       width: 100%; }
-      .embla-slider .embla-slide img.portrait {
-        object-fit: cover; }
+
+.exhibition-carousel-row {
+  --slide-spacing: 12px; }
+  .exhibition-carousel-row .embla-slider .embla-track {
+    margin-left: calc(var(--slide-spacing) * -1); }
+  .exhibition-carousel-row .embla-slider .embla-slide {
+    flex: 0 0 var(--slide-size);
+    padding-left: var(--slide-spacing); }
+    .exhibition-carousel-row .embla-slider .embla-slide.portrait {
+      --slide-size: calc(2/12 * 100%);
+      aspect-ratio: .94/1; }
+    .exhibition-carousel-row .embla-slider .embla-slide.landscape {
+      --slide-size: calc(3/12 * 100%);
+      aspect-ratio: 1.44/1; }
+    .exhibition-carousel-row .embla-slider .embla-slide img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%; }
 
 @media screen and (max-width: 768px) {
   .t-hidden {
