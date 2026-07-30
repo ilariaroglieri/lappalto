@@ -30,7 +30,7 @@
           $carousel = get_field('carousel'); 
         ?>
 
-        <article id="post-<?php the_ID(); ?>" <?php post_class('exhibition-element'); ?> data-status="<?= $status ?>">
+        <article id="post-<?php the_ID(); ?>" <?php post_class('exhibition-element d-flex d-column m-column-reverse'); ?> data-status="<?= $status ?>">
           <div class="exhibition-row-header">
             <div class="entry-cat-el">
               <h2 class="entry-cat <?= $carousel ? 'row-btn' : ''?>"><?= $status == 'ongoing' ? 'Ongoing / ' : sprintf("%02d", $i) .'. ' ?><?= implode( ', ', array_column( $cats, 'name' ) ); ?></h2>

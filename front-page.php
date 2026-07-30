@@ -46,8 +46,8 @@
           if ($startD <= $today && $today <= $endD): ?>
 
             <div class="current-exhibition">
-              <p>Ongoing</p>
-              <p><?= $cleanStartD . '–' . $cleanEndD; ?></p>
+              <span>Ongoing</span>
+              <h3><?= $cleanStartD . '–' . $cleanEndD; ?></h3>
               <h2 class="latest-ex-title"><?php the_title(); ?></h2>
               <h3 class="latest-ex-artists"><?= get_field('artist'); ?></h3>
             </div>

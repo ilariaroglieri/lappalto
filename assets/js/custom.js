@@ -75,38 +75,35 @@ function initMostreAccordion() {
 
   exhibitions.forEach((row, index) => {
     const triggers = row.querySelectorAll('.row-btn'); 
-    const carouselRow = row.querySelector('.exhibition-carousel-row');
-    const sliderEl = carouselRow?.querySelector('.embla-slider');
+    const sliderEl = row?.querySelector('.embla-slider');
 
-    if (!triggers || !carouselRow || !sliderEl) return;
+    if (!triggers || !row || !sliderEl) return;
 
     if (isMobile()) {
-      console.log('is mobile');
       // su mobile: tutti aperti, no autoplay
-      carouselRow.classList.add('open');
+      row.classList.add('open');
       if (!sliderEl._embla) {
-        sliderEl._embla = EmblaCarousel(sliderEl, {}, []);
+        sliderEl._embla = EmblaCarousel(sliderEl, {align: 'center'}, []);
       }
     } else {
     // Apri il primo, chiudi gli altri
       if (index === 0) {
-        carouselRow.classList.add('open');
+        row.classList.add('open');
         if (!sliderEl._embla) {
-          sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
+          sliderEl._embla = EmblaCarousel(sliderEl, {align: 'start'}, [getAutoplay()]);
         }
       } else {
-        carouselRow.classList.remove('open');
+        row.classList.remove('open');
       }
 
       triggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
-          const isAlreadyOpen = carouselRow.classList.contains('open');
+          const isAlreadyOpen = row.classList.contains('open');
 
           // Chiudi tutti e distruggi i loro embla
           exhibitions.forEach(r => {
-            const p = r.querySelector('.exhibition-carousel-row');
-            const s = p?.querySelector('.embla-slider');
-            if (p) p.classList.remove('open');
+            const s = r?.querySelector('.embla-slider');
+            if (r) r.classList.remove('open');
             if (s?._embla) {
               s._embla.destroy();
               s._embla = null;
@@ -115,7 +112,7 @@ function initMostreAccordion() {
 
           // Se non era già aperta, apri questa e inizializza embla
           if (!isAlreadyOpen) {
-            carouselRow.classList.add('open');
+            row.classList.add('open');
             sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
           }
         });
@@ -164,7 +161,10 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
 
 //----- loading content
 document.addEventListener('DOMContentLoaded', () => {
-  EmblaCarousel.globalOptions = { loop: true, align: 'start' };
+  EmblaCarousel.globalOptions = { 
+    loop: true, 
+    align: isMobile() ? 'center' : 'start'
+  };
 
   // posizioni iniziali immediate
   applyPositions();
