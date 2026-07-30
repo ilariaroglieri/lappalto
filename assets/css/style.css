@@ -377,25 +377,25 @@ Version: 1.0
 .t-visible, .m-visible {
   display: none; }
 
-.d-flex, header div[class*="menu-1"] ul {
+.d-flex {
   display: flex; }
-  .d-flex.d-column, header div[class*="menu-1"] ul.d-column {
+  .d-flex.d-column {
     flex-flow: column; }
-  .d-flex.center, header div[class*="menu-1"] ul.center {
+  .d-flex.center {
     align-items: center; }
-  .d-flex.v-center, header div[class*="menu-1"] ul.v-center {
+  .d-flex.v-center {
     justify-content: center; }
-  .d-flex.top, header div[class*="menu-1"] ul.top {
+  .d-flex.top {
     align-items: flex-start; }
-  .d-flex.baseline, header div[class*="menu-1"] ul.baseline {
+  .d-flex.baseline {
     align-items: baseline; }
-  .d-flex.end, header div[class*="menu-1"] ul.end {
+  .d-flex.end {
     justify-content: flex-end; }
-  .d-flex.space-between, header div[class*="menu-1"] ul.space-between {
+  .d-flex.space-between {
     justify-content: space-between; }
-  .d-flex.wrap, header div[class*="menu-1"] ul.wrap {
+  .d-flex.wrap {
     flex-wrap: wrap; }
-  .d-flex.grow, header div[class*="menu-1"] ul.grow {
+  .d-flex.grow {
     flex: 1; }
 
 .p-absolute {
@@ -482,22 +482,29 @@ ul {
   margin-right: auto;
   width: 100%; }
 
-.flex-row, header div[class*="menu-1"] ul {
+.flex-row {
   margin-right: -6px;
   margin-left: -6px;
   position: relative; }
 
 header {
-  margin-top: 12px;
+  margin-top: 18px;
   position: relative;
   z-index: 100000; }
-  header div[class*="menu-1"] ul li.current_page_item a {
-    pointer-events: none;
-    opacity: .45; }
-  header div[class*="menu-1"] ul li a {
-    transition: all .3s; }
-    header div[class*="menu-1"] ul li a:hover {
-      opacity: .45; }
+  header #site-url {
+    position: relative;
+    z-index: 1; }
+  header div[class*="menu-1"] {
+    display: contents; }
+    header div[class*="menu-1"] ul {
+      display: contents; }
+      header div[class*="menu-1"] ul li.current_page_item a {
+        pointer-events: none;
+        opacity: .45; }
+      header div[class*="menu-1"] ul li a {
+        transition: all .3s; }
+        header div[class*="menu-1"] ul li a:hover {
+          opacity: .45; }
 
 main {
   opacity: 0;
@@ -508,7 +515,7 @@ main {
 
 .content:not(#content-exhibitions) {
   min-height: 100%;
-  padding-bottom: 12px; }
+  padding-bottom: 18px; }
 
 #content-home .intro-text {
   padding-top: 45vh; }
@@ -538,7 +545,7 @@ div[class*=embla-slider] {
 
 #content-exhibitions {
   padding-top: 45vh;
-  padding-bottom: 12px; }
+  padding-bottom: 18px; }
   #content-exhibitions .exhibition-element {
     pointer-events: all; }
     #content-exhibitions .exhibition-element .exhibition-row-header {
@@ -633,9 +640,9 @@ div[class*=embla-slider] {
   .t-visible {
     display: inline-block; }
 
-  .d-flex.t-column, header div[class*="menu-1"] ul.t-column {
+  .d-flex.t-column {
     flex-flow: column; }
-  .d-flex.t-column-reverse, header div[class*="menu-1"] ul.t-column-reverse {
+  .d-flex.t-column-reverse {
     flex-flow: column-reverse; }
 
   .t-whole {
@@ -676,12 +683,12 @@ div[class*=embla-slider] {
   .m-visible {
     display: inline-block; }
 
-  .d-flex.m-column, header div[class*="menu-1"] ul.m-column {
+  .d-flex.m-column {
     flex-flow: column; }
-  .d-flex.m-column-reverse, header div[class*="menu-1"] ul.m-column-reverse {
+  .d-flex.m-column-reverse {
     flex-flow: column-reverse; }
 
-  .m-whole {
+  .m-whole, header div[class*="menu-1"] ul li {
     width: calc(100% - 12px);
     margin-left: 6px;
     margin-right: 6px; }
@@ -690,6 +697,31 @@ div[class*=embla-slider] {
     width: calc(50% - 12px);
     margin-left: 6px;
     margin-right: 6px; }
+
+  header #menu-btn {
+    display: flex !important;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 1; }
+  header div[class*="menu-1"] {
+    display: inherit;
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 100vw;
+    height: 100dvh;
+    background-color: white;
+    background-image: url("../img/monogram_LA.svg");
+    background-repeat: no-repeat;
+    background-size: calc(8.3333% * 4);
+    background-position: bottom 18px right 18px;
+    transition: all .5s; }
+    header div[class*="menu-1"] ul {
+      width: 100%;
+      display: inline-block;
+      padding: 42px 12px 0; }
+    header div[class*="menu-1"].open {
+      right: 0; }
 
   #content-home .current-exhibition {
     order: 1;
@@ -702,7 +734,7 @@ div[class*=embla-slider] {
     padding-bottom: 24px; }
 
   #content-exhibitions {
-    padding-top: 0; }
+    padding-top: 6px; }
     #content-exhibitions .exhibition-element .exhibition-row-header {
       grid-template-columns: 1fr;
       grid-template-areas: "cat" "title" "artists" "download"; }

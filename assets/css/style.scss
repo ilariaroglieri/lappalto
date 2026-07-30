@@ -195,13 +195,17 @@ li {
 }
 
 header {
-  margin-top: $spacing;
+  margin-top: $half-spacing*3;
   position: relative;
   z-index: 100000;
+  #site-url {
+    position: relative;
+    z-index: 1;
+  }
   div[class*="menu-1"]{
+    display: contents;
     ul {
-      @extend .d-flex;
-      @extend .flex-row;
+      display: contents;
       li {
         @extend .d-3-twelfth;
         &.current_page_item a {
@@ -231,7 +235,7 @@ main {
 
 .content:not(#content-exhibitions) {
   min-height: 100%;
-  padding-bottom: $spacing;
+  padding-bottom: $half-spacing*3;
 }
 
 #content-home {
@@ -276,7 +280,7 @@ div[class*=embla-slider] {
 
 #content-exhibitions {
   padding-top: 45vh;
-  padding-bottom: $spacing;
+  padding-bottom: $half-spacing*3;
   .exhibition-element {
     pointer-events: all;
     .exhibition-row-header {

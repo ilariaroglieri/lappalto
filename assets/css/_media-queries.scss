@@ -101,9 +101,39 @@
     margin-right: #{$half-spacing};
   }
 
-  // main {
-  //   min-height: calc(100dvh - #{$double-spacing}*2);
-  // }
+  header {
+    #menu-btn {
+      display: flex !important;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 1;
+    }
+    div[class*="menu-1"]{
+      display: inherit;
+      position: fixed;
+      top: 0;
+      right: -100vw;
+      width: 100vw;
+      height: 100dvh;
+      background-color: white;
+      background-image: url('../img/monogram_LA.svg');
+      background-repeat: no-repeat;
+      background-size: calc(#{$col} * 4);
+      background-position: bottom $half-spacing*3 right $half-spacing*3;
+      transition: all .5s;
+      ul {
+        width: 100%;
+        display: inline-block;
+        padding: $half-spacing*7 $spacing 0;
+        li {
+          @extend .m-whole;
+        }
+      }
+      &.open {
+        right: 0;
+      }
+    }
+  }
 
   #content-home {
     .current-exhibition {
@@ -120,7 +150,7 @@
   }
 
   #content-exhibitions {
-    padding-top: 0;
+    padding-top: $half-spacing;
     .exhibition-element {
       .exhibition-row-header {
         grid-template-columns: 1fr;

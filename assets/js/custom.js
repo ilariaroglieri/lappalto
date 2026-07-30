@@ -69,7 +69,6 @@ function initSliders() {
 }
 
 function initMostreAccordion() {
-
   const exhibitions = content.querySelectorAll('.exhibition-element');
   if (!exhibitions.length) return;
 
@@ -157,6 +156,14 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
   li.classList.add('current_page_item');
 });
 
+//-- Menu Mobile
+document.querySelector('#menu-btn a').addEventListener('click', e => {
+  e.preventDefault();
+  const btn = e.currentTarget;
+  const nav = document.querySelector('.menu-menu-1-container');
+  const isOpen = nav.classList.toggle('open');
+  btn.textContent = isOpen ? btn.dataset.open : btn.dataset.close;
+})
 
 
 //----- loading content
