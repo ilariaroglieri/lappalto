@@ -3,6 +3,24 @@
     "title": "Home CF",
     "fields": [
         {
+            "key": "field_6a7212c570fe3",
+            "label": "Exhibition to show",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "At the bottom of the page, an exhibition will be displayed automatically according to the following priority: ongoing > incoming > latest exhibition",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_6a68e41c4db34",
             "label": "Home carousel",
             "name": "home_carousel",
@@ -49,5 +67,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785259375
+    "modified": 1785860956
 }
