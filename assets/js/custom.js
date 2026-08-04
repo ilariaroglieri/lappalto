@@ -143,6 +143,8 @@ function initArtistsAccordion() {
       });
     });
 
+    initArtistsScrollSpy(artists, listItems);
+
     // Active su hash iniziale (desktop)
     const hash = window.location.hash?.slice(1);
     if (hash) {
@@ -150,6 +152,31 @@ function initArtistsAccordion() {
       activeItem?.classList.add('active');
     }
   }
+}
+
+function initArtistsScrollSpy(artists, listItems) {
+  if (!artists.length || !listItems.length) return;
+
+  let currentSlug = null;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const slug = entry.target.id;
+      if (slug === currentSlug) return;
+
+      currentSlug = slug;
+      listItems.forEach(i => i.classList.remove('active'));
+      document.querySelector(`.artist-list-btn[data-title="${slug}"]`)?.classList.add('active');
+      history.replaceState(null, '', `#${slug}`);
+    });
+  }, {
+    rootMargin: '-20% 0px -75% 0px',
+    threshold: 0
+  });
+
+  artists.forEach(artist => observer.observe(artist));
 }
 
 function initExhibitsAccordion() {
