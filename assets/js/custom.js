@@ -65,10 +65,94 @@ function initSliders() {
   }
 
   // Accordion mostre: più slider, uno alla volta
-  initMostreAccordion();
+  initExhibitsAccordion();
+
+  initArtistsAccordion()
 }
 
-function initMostreAccordion() {
+function initArtistsAccordion() {
+  const artists = document.querySelectorAll('#artists-contents > div');
+  if (!artists.length) return;
+
+  if (isMobile()) {
+    // Mobile: nessun init, tutto delegato ai trigger accordion
+    artists.forEach(artist => {
+      const trigger = artist.querySelector('.artist-title.row-btn');
+      const sliderEl = artist.querySelector('.embla-slider');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', () => {
+        const isAlreadyOpen = artist.classList.contains('open');
+
+        // Chiudi tutti e distruggi i loro slider
+        artists.forEach(a => {
+          a.classList.remove('open');
+          const s = a.querySelector('.embla-slider');
+          if (s?._embla) {
+            s._embla.destroy();
+            s._embla = null;
+          }
+        });
+
+        // Se non era già aperto, apri questo e inizializza lo slider
+        if (!isAlreadyOpen) {
+          artist.classList.add('open');
+          if (sliderEl && !sliderEl._embla) {
+            sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
+          }
+        }
+      });
+    });
+
+    // Gestione hash all'arrivo su mobile
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        target.classList.add('open');
+        const sliderEl = target.querySelector('.embla-slider');
+        if (sliderEl && !sliderEl._embla) {
+          sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
+        }
+        target.scrollIntoView();
+      }
+    }
+
+  } else {
+    // Desktop: init tutti gli slider con autoplay
+    artists.forEach(artist => {
+      const sliderEl = artist.querySelector('.embla-slider');
+      if (sliderEl && !sliderEl._embla) {
+        sliderEl._embla = EmblaCarousel(sliderEl, { align: 'start' }, [getAutoplay()]);
+      }
+    });
+
+    // Lista laterale: scroll + active
+    const listItems = document.querySelectorAll('.artist-list-btn');
+    listItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const slug = item.dataset.title;
+        const target = document.getElementById(slug);
+        if (!target) return;
+
+        listItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        target.scrollIntoView({ behavior: 'smooth' });
+        history.pushState(null, '', `#${slug}`);
+      });
+    });
+
+    // Active su hash iniziale (desktop)
+    const hash = window.location.hash?.slice(1);
+    if (hash) {
+      const activeItem = document.querySelector(`.artist-list-btn[data-title="${hash}"]`);
+      activeItem?.classList.add('active');
+    }
+  }
+}
+
+function initExhibitsAccordion() {
   const exhibitions = content.querySelectorAll('.exhibition-element');
   if (!exhibitions.length) return;
 

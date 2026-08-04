@@ -473,9 +473,9 @@ ul {
   list-style-type: none; }
 
 .container {
-  width: calc(100% - 6px*6);
-  margin-left: 18px;
-  margin-right: 18px; }
+  width: calc(100% - 12px*2 + 6px);
+  margin-left: calc(12px + 6px/2);
+  margin-right: calc(12px + 6px/2); }
 
 .container-fluid {
   margin-left: auto;
@@ -488,7 +488,8 @@ ul {
   position: relative; }
 
 header {
-  margin-top: 18px;
+  margin-top: calc(12px + 6px/2);
+  margin-bottom: 12px;
   position: relative;
   z-index: 100000; }
   header #site-url {
@@ -589,6 +590,39 @@ div[class*=embla-slider] {
       opacity: 1;
       margin: 12px 0;
       overflow: visible; }
+
+#content-artists #artists-list .artist-list-btn {
+  cursor: pointer;
+  opacity: 1;
+  transition: all .3s;
+  pointer-events: all; }
+  #content-artists #artists-list .artist-list-btn:hover {
+    opacity: .45; }
+  #content-artists #artists-list .artist-list-btn.active {
+    opacity: .45;
+    pointer-events: none; }
+#content-artists #artists-contents {
+  height: 100dvh;
+  overflow: scroll; }
+  #content-artists #artists-contents .artist-carousel-row {
+    --slide-spacing: 12px; }
+    #content-artists #artists-contents .artist-carousel-row .embla-slider {
+      width: calc(100% + 6px*6);
+      transform: translateX(calc(6px * -3)); }
+      #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-track {
+        margin-left: 18px; }
+      #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide {
+        flex: 0 0 var(--slide-size);
+        margin-left: var(--slide-spacing);
+        height: calc(4/12 * 100vw * 1.1); }
+        #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide.portrait {
+          --slide-size: calc(8.3333vw * 4 - 12px); }
+        #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide.landscape {
+          --slide-size: calc(8.3333vw * 6 - 12px); }
+        #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%; }
 
 #site_logo {
   position: fixed;

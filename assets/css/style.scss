@@ -177,9 +177,9 @@ li {
 }
 
 .container {
-  width: calc(100% - #{$half-spacing}*6);
-  margin-left: $half-spacing*3;
-  margin-right: $half-spacing*3;
+  width: calc(100% - #{$spacing}*2 + #{$half-spacing});
+  margin-left: calc(#{$spacing} + #{$half-spacing}/2);
+  margin-right: calc(#{$spacing} + #{$half-spacing}/2);
 }
 
 .container-fluid {
@@ -195,7 +195,8 @@ li {
 }
 
 header {
-  margin-top: $half-spacing*3;
+  margin-top: calc(#{$spacing} + #{$half-spacing}/2);
+  margin-bottom: $spacing;
   position: relative;
   z-index: 100000;
   #site-url {
@@ -338,6 +339,54 @@ div[class*=embla-slider] {
         overflow: visible;
       }
     } 
+  }
+}
+
+#content-artists {
+  #artists-list {
+    .artist-list-btn {
+      cursor: pointer;
+      opacity: 1;
+      transition: all .3s;
+      pointer-events: all;
+      &:hover {
+        opacity: .45;
+      }
+      &.active {
+        opacity: .45;
+        pointer-events: none;
+      }
+    }
+  }
+  #artists-contents {
+    height: 100dvh;
+    overflow: scroll;
+    .artist-carousel-row {
+      --slide-spacing: #{$spacing};
+      .embla-slider {
+        width: calc(100% + #{$half-spacing}*6);
+        transform: translateX(calc(#{$half-spacing} * -3));
+        .embla-track {
+          margin-left: $half-spacing*3;
+        }
+        .embla-slide {
+          flex: 0 0 var(--slide-size);
+          margin-left: var(--slide-spacing);
+          height: calc(4/12 * 100vw * 1.1);
+          &.portrait {
+            --slide-size: calc(#{$colVw} * 4 - #{$spacing});
+          }
+          &.landscape {
+            --slide-size: calc(#{$colVw} * 6 - #{$spacing});
+          }
+          img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
 

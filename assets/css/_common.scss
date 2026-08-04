@@ -36,7 +36,8 @@ $double-spacing: $spacing * 2;
 $triple-spacing: $spacing * 3;
 $fourfold-spacing: $spacing * 4;
 
-$col: 8.3333%; // 12 columns
+$col: 8.3333%;
+$colVw: 8.3333vw; // 12 columns
 
 // =============================
 // COLUMN SYSTEM (12 grid)
@@ -120,24 +121,19 @@ $spacing-scale: (
 // =============================
 
 @media screen and (max-width: $tablet) {
-
   @include generate-spacing("spacing-t-b", margin-bottom);
   @include generate-spacing("spacing-t-t", margin-top);
   @include generate-spacing("spacing-t-p-b", padding-bottom);
   @include generate-spacing("spacing-t-p-t", padding-top);
-
 }
-
 
 // =============================
 // MOBILE
 // =============================
 
 @media screen and (max-width: $mobile) {
-
   @include generate-spacing("spacing-m-b", margin-bottom);
   @include generate-spacing("spacing-m-t", margin-top);
   @include generate-spacing("spacing-m-p-b", padding-bottom);
   @include generate-spacing("spacing-m-p-t", padding-top);
-
 }
