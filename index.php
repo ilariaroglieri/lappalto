@@ -44,7 +44,7 @@
               </div>
               <div class="entry-download-el">
                 <?php if ($file): ?>
-                  <a href="<?= $file['url'] ?>" class="entry-download">Download PDF</a>
+                  <a href="<?= $file['url'] ?>" class="entry-download underlined">Download PDF</a>
                 <?php endif; ?>
               </div>
             </div>

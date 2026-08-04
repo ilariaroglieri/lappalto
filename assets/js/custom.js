@@ -67,7 +67,7 @@ function initSliders() {
   // Accordion mostre: più slider, uno alla volta
   initExhibitsAccordion();
 
-  initArtistsAccordion()
+  initArtistsAccordion();
 }
 
 function initArtistsAccordion() {
@@ -78,6 +78,7 @@ function initArtistsAccordion() {
     // Mobile: nessun init, tutto delegato ai trigger accordion
     artists.forEach(artist => {
       const trigger = artist.querySelector('.artist-title.row-btn');
+      const artistContents = artist.querySelector('.artist-el');
       const sliderEl = artist.querySelector('.embla-slider');
       if (!trigger) return;
 
@@ -87,6 +88,7 @@ function initArtistsAccordion() {
         // Chiudi tutti e distruggi i loro slider
         artists.forEach(a => {
           a.classList.remove('open');
+          artistContents.classList.remove('open');
           const s = a.querySelector('.embla-slider');
           if (s?._embla) {
             s._embla.destroy();
@@ -96,7 +98,7 @@ function initArtistsAccordion() {
 
         // Se non era già aperto, apri questo e inizializza lo slider
         if (!isAlreadyOpen) {
-          artist.classList.add('open');
+          artistContents.classList.add('open');
           if (sliderEl && !sliderEl._embla) {
             sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
           }

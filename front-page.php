@@ -43,18 +43,18 @@
 
             $cleanEndD = date_i18n('j F Y', $endD->getTimestamp());
 
+            foreach ($exhibitions as $exhibition): 
+              if ($startD <= $today && $today <= $endD): ?>
 
-            if ($startD <= $today && $today <= $endD): ?>
-
-              <div class="current-exhibition">
-                <span>Ongoing</span>
-                <h3><?= $cleanStartD . '–' . $cleanEndD; ?></h3>
-                <h2 class="latest-ex-title"><?php the_title(); ?></h2>
-                <h3 class="latest-ex-artists"><?= get_field('artist'); ?></h3>
-              </div>
-              
-            <?php break; // takes the first
-            endif;
+                <div class="current-exhibition">
+                  <span>Ongoing</span>
+                  <h3><?= $cleanStartD . '–' . $cleanEndD; ?></h3>
+                  <h2 class="latest-ex-title"><?php the_title(); ?></h2>
+                  <h3 class="latest-ex-artists"><?= get_field('artist'); ?></h3>
+                </div>
+                
+              <?php endif;
+            endforeach; 
           endwhile;
           wp_reset_postdata(); ?>
 

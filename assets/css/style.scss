@@ -171,6 +171,9 @@ a {
   &:hover {
     color: currentColor;
   }
+  &.underlined {
+    text-decoration: underline;
+  }
 }
 
 ul {

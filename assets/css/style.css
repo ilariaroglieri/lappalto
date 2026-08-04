@@ -472,6 +472,8 @@ a {
   transition: border-bottom .3s; }
   a:hover {
     color: currentColor; }
+  a.underlined {
+    text-decoration: underline; }
 
 ul {
   margin: 0;
@@ -767,7 +769,7 @@ div[class*=embla-slider] {
     header div[class*="menu-1"] ul {
       width: 100%;
       display: inline-block;
-      padding: 42px 12px 0; }
+      padding: 42px 9px 0; }
     header div[class*="menu-1"].open {
       right: 0; }
 
@@ -799,7 +801,40 @@ div[class*=embla-slider] {
         #content-exhibitions .exhibition-element .exhibition-carousel-row .embla-slider .embla-slide.landscape {
           --slide-size: calc(8.3333% * 10 - 12px); }
 
-  footer {
+  #content-artists {
+    margin-right: 9px; }
+    #content-artists #artists-contents {
+      width: calc(100% - 12px);
+      margin-right: 3px;
+      margin-left: 3px;
+      overflow: visible;
+      height: unset; }
+      #content-artists #artists-contents .artist-title {
+        cursor: pointer; }
+      #content-artists #artists-contents .artist-el {
+        opacity: 0;
+        max-height: 0;
+        transition: all 1s;
+        overflow: hidden; }
+        #content-artists #artists-contents .artist-el.open {
+          opacity: 1;
+          max-height: 300vh;
+          overflow: visible; }
+      #content-artists #artists-contents .artist-carousel-row .embla-slider {
+        width: calc(100% + 6px*6);
+        transform: translateX(calc(6px * -3)); }
+        #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide {
+          height: calc(6/12 * 100vw * 1.1); }
+          #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide.portrait {
+            --slide-size: calc(8.3333% * 6 - 12px); }
+          #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide.landscape {
+            --slide-size: calc(8.3333% * 10 - 12px); }
+          #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide .img-caption {
+            font-size: 12px; }
+      #content-artists #artists-contents .artists-texts {
+        padding-right: 0; }
+
+  #site_logo {
     display: none; } }
 
 /*# sourceMappingURL=style.css.map */

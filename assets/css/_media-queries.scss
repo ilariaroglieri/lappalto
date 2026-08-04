@@ -124,7 +124,7 @@
       ul {
         width: 100%;
         display: inline-block;
-        padding: $half-spacing*7 $spacing 0;
+        padding: $half-spacing*7 9px 0;
         li {
           @extend .m-whole;
         }
@@ -181,7 +181,51 @@
     }
   }
 
-  footer {
+  #content-artists {
+    margin-right: 9px;
+    #artists-contents {
+      width: calc(100% - #{$spacing});
+      margin-right: 3px;
+      margin-left: 3px;
+      overflow: visible;
+      height: unset;
+      .artist-title {
+        cursor: pointer;
+      }
+      .artist-el {
+        opacity: 0;
+        max-height: 0;
+        transition: all 1s;
+        overflow: hidden;
+        &.open {
+          opacity: 1;
+          max-height: 300vh;
+          overflow: visible;
+        }
+      }
+      .artist-carousel-row .embla-slider {
+        width: calc(100% + #{$half-spacing}*6);
+        transform: translateX(calc(#{$half-spacing} * -3));
+        .embla-slide {
+          height: calc(6/12 * 100vw * 1.1);
+          &.portrait {
+            --slide-size: calc(#{$col} * 6 - #{$spacing});
+          }
+          &.landscape {
+            --slide-size: calc(#{$col} * 10 - #{$spacing});
+          }
+          .img-caption {
+            font-size: 12px;
+          }
+        }
+      }
+      .artists-texts {
+        padding-right: 0;
+      }
+    }
+  }
+
+  #site_logo {
     display: none;
   }
 }
