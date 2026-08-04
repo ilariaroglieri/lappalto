@@ -6,7 +6,8 @@
       $artists = get_posts([
         'post_type'      => 'artist',
         'posts_per_page' => -1,
-        'orderby'        => 'title',
+        'meta_key'       => 'artist_surname',
+        'orderby'        => 'meta_value',
         'order'          => 'ASC',
       ]);
 
