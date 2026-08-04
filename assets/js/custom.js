@@ -156,32 +156,32 @@ function initExhibitsAccordion() {
   const exhibitions = content.querySelectorAll('.exhibition-element');
   if (!exhibitions.length) return;
 
-  exhibitions.forEach((row, index) => {
-    const triggers = row.querySelectorAll('.row-btn'); 
-    const sliderEl = row?.querySelector('.embla-slider');
+  exhibitions.forEach((ex, index) => {
+    const triggers = ex.querySelectorAll('.row-btn'); 
+    const sliderEl = ex?.querySelector('.embla-slider');
 
-    if (!triggers || !row || !sliderEl) return;
+    if (!triggers || !ex || !sliderEl) return;
 
     if (isMobile()) {
       // su mobile: tutti aperti, no autoplay
-      row.classList.add('open');
+      ex.classList.add('open');
       if (!sliderEl._embla) {
         sliderEl._embla = EmblaCarousel(sliderEl, {align: 'center'}, []);
       }
     } else {
     // Apri il primo, chiudi gli altri
       if (index === 0) {
-        row.classList.add('open');
+        ex.classList.add('open');
         if (!sliderEl._embla) {
           sliderEl._embla = EmblaCarousel(sliderEl, {align: 'start'}, [getAutoplay()]);
         }
       } else {
-        row.classList.remove('open');
+        ex.classList.remove('open');
       }
 
       triggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
-          const isAlreadyOpen = row.classList.contains('open');
+          const isAlreadyOpen = ex.classList.contains('open');
 
           // Chiudi tutti e distruggi i loro embla
           exhibitions.forEach(r => {
@@ -195,7 +195,7 @@ function initExhibitsAccordion() {
 
           // Se non era già aperta, apri questa e inizializza embla
           if (!isAlreadyOpen) {
-            row.classList.add('open');
+            ex.classList.add('open');
             sliderEl._embla = EmblaCarousel(sliderEl, {}, [getAutoplay()]);
           }
         });

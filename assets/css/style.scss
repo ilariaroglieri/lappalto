@@ -137,6 +137,9 @@ Version: 1.0
 
 
 /* basic elements */
+html {
+  overflow-x: hidden;
+}
 body {
   font-family: 'Diplomat', sans-serif;
   color: $primaryColor;
@@ -177,9 +180,9 @@ li {
 }
 
 .container {
-  width: calc(100% - #{$spacing}*2 + #{$half-spacing});
-  margin-left: calc(#{$spacing} + #{$half-spacing}/2);
-  margin-right: calc(#{$spacing} + #{$half-spacing}/2);
+  width: calc(100% - 30px);
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .container-fluid {
@@ -234,7 +237,7 @@ main {
   }
 }
 
-.content:not(#content-exhibitions) {
+.content:not(#content-exhibitions):not(#content-artists) {
   min-height: 100%;
   padding-bottom: $half-spacing*3;
 }
@@ -343,6 +346,7 @@ div[class*=embla-slider] {
 }
 
 #content-artists {
+  margin-left: $spacing;
   #artists-list {
     .artist-list-btn {
       cursor: pointer;
@@ -359,8 +363,13 @@ div[class*=embla-slider] {
     }
   }
   #artists-contents {
-    height: 100dvh;
-    overflow: scroll;
+    width: 50%;
+    margin-right: 0;
+    overflow-y: scroll;
+    height: calc(100dvh - 45px); //header height
+    .artist-el {
+      overflow: hidden;
+    }
     .artist-carousel-row {
       --slide-spacing: #{$spacing};
       .embla-slider {
@@ -387,6 +396,9 @@ div[class*=embla-slider] {
         }
       }
     }
+    .artist-texts {
+      padding-right: $double-spacing;
+    }
   }
 }
 
@@ -395,6 +407,12 @@ div[class*=embla-slider] {
   width: clamp(80px, #{$col}, #{$col});
   bottom: $spacing;
   right: $spacing;
+  @at-root body.archive & {
+    display: none;
+  } 
+  @at-root body.blog & {
+    display: none;
+  } 
 }
 
 #overlay-container {

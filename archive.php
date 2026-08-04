@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<main class="container-fluid">
   <?php
     $artists = get_posts([
       'post_type'      => 'artist',
@@ -20,8 +20,7 @@
   ?>
 
     <div id="content-artists" class="content">
-      <div class="d-flex flex-row m-column">
-        <div class="d-3-twelfth t-hidden"></div>
+      <div class="d-flex m-column end">
         <div id="artists-list" class="d-3-twelfth t-half m-hidden">
           <ul>
             <?php foreach ($artists as $artist): ?>
@@ -30,11 +29,11 @@
         </div>
         <div id="artists-contents" class="d-half m-whole">
           <?php foreach ($artists as $artist): ?>
-            <div id="<?= $artist->slug ?>" class="spacing-b-6">
+            <div id="<?= $artist->slug ?>" class="artist-el spacing-b-6">
               <h2 class="artist-title row-btn m-visible"><?= $artist->post_title ?></h2>
 
               <?php if ($artist->carousel): ?>
-                <div class="artist-carousel-row">
+                <div class="artist-carousel-row spacing-b-2">
                   <div class="embla-slider">
                     <div class="embla-track">
                       <?php foreach( $artist->carousel as $i => $img ):

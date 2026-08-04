@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<main class="container">
   <?php if ( have_posts() ) : ?>
     <?php 
       $today = new DateTime(date('Y-m-d'), new DateTimeZone('UTC'));

@@ -25,7 +25,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<div class="container full-height d-flex d-column">
+		<div class="container">
 			<header class="d-flex flex-row">
 				<div id="site-url" class="d-3-twelfth m-half">
 					<a href="<?= home_url() ?>"><?php bloginfo( 'name' ); ?></a>
@@ -35,3 +35,4 @@
 				</div>
 				<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 			</header>
+		</div>
