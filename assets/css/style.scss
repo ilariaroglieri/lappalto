@@ -145,6 +145,9 @@ body {
   color: $primaryColor;
   line-height: 1.3;
   @extend .s-regular;
+  display: flex;
+  flex-flow: column;
+  min-height: 100dvh;
 }
 
 p {
@@ -232,13 +235,13 @@ main {
   opacity: 0;
   transition: opacity .5s;
   flex-grow: 1;
+  display: flex;
   &.loaded {
     opacity: 1;
   }
 }
 
 .content:not(#content-exhibitions):not(#content-artists) {
-  min-height: 100%;
   padding-bottom: $half-spacing*3;
 }
 
@@ -250,7 +253,7 @@ main {
 
 #home-slider {
   top:0;
-  left: $half-spacing * 3;
+  left: 15px;
   z-index: -1;
   .embla-slider-home {
     .embla-slide {
@@ -407,12 +410,6 @@ div[class*=embla-slider] {
   width: clamp(80px, #{$col}, #{$col});
   bottom: $spacing;
   right: $spacing;
-  @at-root body.archive & {
-    display: none;
-  } 
-  @at-root body.blog & {
-    display: none;
-  } 
 }
 
 #overlay-container {
