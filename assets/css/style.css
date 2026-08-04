@@ -482,8 +482,8 @@ ul {
 
 .container {
   width: calc(100% - 30px);
-  margin-left: 15px;
-  margin-right: 15px; }
+  margin-left: calc(12px + 6px/2);
+  margin-right: calc(12px + 6px/2); }
 
 .container-fluid {
   margin-left: auto;
@@ -496,7 +496,7 @@ ul {
   position: relative; }
 
 header {
-  margin-top: calc(12px + 6px/2);
+  margin-top: 12px;
   margin-bottom: 12px;
   position: relative;
   z-index: 100000; }
@@ -524,14 +524,14 @@ main {
     opacity: 1; }
 
 .content:not(#content-exhibitions):not(#content-artists) {
-  padding-bottom: 18px; }
+  padding-bottom: 12px; }
 
 #content-home .intro-text {
   padding-top: 45vh; }
 
 #home-slider {
   top: 0;
-  left: 15px;
+  left: calc(12px + 6px/2);
   z-index: -1; }
   #home-slider .embla-slider-home .embla-slide {
     flex: 0 0 100%;
@@ -554,7 +554,7 @@ div[class*=embla-slider] {
 
 #content-exhibitions {
   padding-top: 45vh;
-  padding-bottom: 18px; }
+  padding-bottom: 12px; }
   #content-exhibitions .exhibition-element {
     pointer-events: all; }
     #content-exhibitions .exhibition-element .exhibition-row-header {
@@ -565,8 +565,6 @@ div[class*=embla-slider] {
       cursor: default; }
       #content-exhibitions .exhibition-element .exhibition-row-header .row-btn {
         cursor: pointer; }
-      #content-exhibitions .exhibition-element .exhibition-row-header a {
-        border-bottom: 1px solid currentColor; }
     #content-exhibitions .exhibition-element .exhibition-carousel-row {
       --slide-spacing: 12px;
       max-height: 0;
@@ -643,8 +641,8 @@ div[class*=embla-slider] {
 #site_logo {
   position: fixed;
   width: clamp(80px, 8.3333%, 8.3333%);
-  bottom: 12px;
-  right: 12px; }
+  bottom: calc(12px + 6px/2);
+  right: calc(12px + 6px/2); }
 
 #overlay-container {
   top: 0;
@@ -772,7 +770,7 @@ div[class*=embla-slider] {
     header div[class*="menu-1"] ul {
       width: 100%;
       display: inline-block;
-      padding: 42px 9px 0; }
+      padding: 42px calc(6px + 6px/2) 0; }
     header div[class*="menu-1"].open {
       right: 0; }
 
@@ -825,7 +823,7 @@ div[class*=embla-slider] {
           overflow: visible; }
       #content-artists #artists-contents .artist-carousel-row .embla-slider {
         width: calc(100% + 6px*6);
-        transform: translateX(calc(6px * -3)); }
+        transform: translateX(calc(6px * - 6px/2)); }
         #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide {
           height: calc(6/12 * 100vw * 1.1); }
           #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide.portrait {

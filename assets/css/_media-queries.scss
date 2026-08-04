@@ -67,7 +67,7 @@
   body {
     overflow-x: hidden;
   }
-  
+
   .s-regular {
     font-size: 20px;
   }
@@ -128,7 +128,7 @@
       ul {
         width: 100%;
         display: inline-block;
-        padding: $half-spacing*7 9px 0;
+        padding: $half-spacing*7 calc(#{$half-spacing} + #{$half-spacing}/2) 0;
         li {
           @extend .m-whole;
         }
@@ -209,7 +209,7 @@
       }
       .artist-carousel-row .embla-slider {
         width: calc(100% + #{$half-spacing}*6);
-        transform: translateX(calc(#{$half-spacing} * -3));
+        transform: translateX(calc(#{$half-spacing} * - #{$half-spacing}/2));
         .embla-slide {
           height: calc(6/12 * 100vw * 1.1);
           &.portrait {

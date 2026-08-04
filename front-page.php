@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-  <div class="container">
+  <div class="container d-flex">
     <?php if ( have_posts() ) : ?>
       <div id="content-home" class="content d-flex d-column space-between grow">
         <?php  while ( have_posts() ) : the_post(); ?>
@@ -18,9 +18,12 @@
 
           $exhibitions = new WP_Query($args);
           $ongoing = null;
+          $incoming = null;
+          $ended = null;
           $today = new DateTime(date('Y-m-d'), new DateTimeZone('UTC')); 
 
           while ($exhibitions->have_posts()): $exhibitions->the_post();
+            // logice del display della data
             $startD = DateTime::createFromFormat('Ymd', get_field('starting_date', false, false));
             $endD = DateTime::createFromFormat('Ymd', get_field('ending_date', false, false));
 
@@ -43,20 +46,52 @@
 
             $cleanEndD = date_i18n('j F Y', $endD->getTimestamp());
 
-            foreach ($exhibitions as $exhibition): 
-              if ($startD <= $today && $today <= $endD): ?>
+            $exhibition = [
+              'title' => get_the_title(),
+              'artist' => get_field('artist'),
+              'cleanStartD' => $cleanStartD,
+              'cleanEndD' => $cleanEndD,
+              'startD' => $startD,
+              'endD' => $endD,
+            ];
 
-                <div class="current-exhibition">
-                  <span>Ongoing</span>
-                  <h3><?= $cleanStartD . '–' . $cleanEndD; ?></h3>
-                  <h2 class="latest-ex-title"><?php the_title(); ?></h2>
-                  <h3 class="latest-ex-artists"><?= get_field('artist'); ?></h3>
-                </div>
-                
-              <?php endif;
-            endforeach; 
+            // logica per dividere le mostre
+            if ($startD <= $today && $today <= $endD):
+              if ($ongoing === null):
+                $ongoing = $exhibition;
+              endif;
+            elseif ($startD > $today):
+              if ($incoming === null || $startD < $incoming['startD']):
+                $incoming = $exhibition;
+              endif;
+            elseif ($endD < $today):
+              if ($ended === null || $endD > $ended['endD']):
+                $ended = $exhibition;
+              endif;
+            endif;
+              
           endwhile;
           wp_reset_postdata(); ?>
+
+          <?php 
+            $toShow = $ongoing ?? $incoming ?? $ended;
+            $state = null;
+
+            if ($ongoing !== null): 
+              $state = 'Ongoing';
+            elseif ($incomimg !== null): 
+              $state = 'Incoming';
+            else: 
+              $state = 'Latest'; 
+            endif;
+          ?>
+
+          <div class="current-exhibition">
+            <span><?= $state ?></span>
+            <h3><?= $toShow['cleanStartD'] . '–' . $toShow['cleanEndD']; ?></h3>
+            <h2 class="latest-ex-title"><?= $toShow['title'] ?></h2>
+            <h3 class="latest-ex-artists"><?= $toShow['artist'] ?></h3>
+          </div>
 
 
           <?php // home carousel

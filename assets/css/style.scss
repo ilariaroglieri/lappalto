@@ -187,8 +187,8 @@ li {
 
 .container {
   width: calc(100% - 30px);
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: calc(#{$spacing} + #{$half-spacing}/2);
+  margin-right: calc(#{$spacing} + #{$half-spacing}/2);
 }
 
 .container-fluid {
@@ -204,7 +204,7 @@ li {
 }
 
 header {
-  margin-top: calc(#{$spacing} + #{$half-spacing}/2);
+  margin-top: $spacing;
   margin-bottom: $spacing;
   position: relative;
   z-index: 100000;
@@ -245,7 +245,7 @@ main {
 }
 
 .content:not(#content-exhibitions):not(#content-artists) {
-  padding-bottom: $half-spacing*3;
+  padding-bottom: $spacing;
 }
 
 #content-home {
@@ -256,7 +256,7 @@ main {
 
 #home-slider {
   top:0;
-  left: 15px;
+  left: calc(#{$spacing} + #{$half-spacing}/2);
   z-index: -1;
   .embla-slider-home {
     .embla-slide {
@@ -290,7 +290,7 @@ div[class*=embla-slider] {
 
 #content-exhibitions {
   padding-top: 45vh;
-  padding-bottom: $half-spacing*3;
+  padding-bottom: $spacing;
   .exhibition-element {
     pointer-events: all;
     .exhibition-row-header {
@@ -301,9 +301,6 @@ div[class*=embla-slider] {
       cursor: default;
       .row-btn {
         cursor: pointer;
-      }
-      a {
-        border-bottom: 1px solid currentColor;
       }
     }
     .exhibition-carousel-row { 
@@ -411,8 +408,8 @@ div[class*=embla-slider] {
 #site_logo {
   position: fixed;
   width: clamp(80px, #{$col}, #{$col});
-  bottom: $spacing;
-  right: $spacing;
+  bottom: calc(#{$spacing} + #{$half-spacing}/2);
+  right: calc(#{$spacing} + #{$half-spacing}/2);
 }
 
 #overlay-container {
