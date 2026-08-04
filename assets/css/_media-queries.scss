@@ -64,6 +64,10 @@
 }
 
 @media screen and (max-width: $mobile) {
+  body {
+    overflow-x: hidden;
+  }
+  
   .s-regular {
     font-size: 20px;
   }

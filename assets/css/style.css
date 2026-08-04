@@ -721,6 +721,9 @@ div[class*=embla-slider] {
     #content-exhibitions .exhibition-element .exhibition-row-header .entry-download-el {
       grid-area: download; } }
 @media screen and (max-width: 640px) {
+  body {
+    overflow-x: hidden; }
+
   .s-regular, .wysiwyg.s-regular *, body, h1, h2, h3, h4 {
     font-size: 20px; }
 

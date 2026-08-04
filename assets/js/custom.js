@@ -262,11 +262,14 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
   e.preventDefault();
   navigateTo(link.href);
 
-
   document.querySelectorAll('.menu-menu-1-container ul li').forEach(el => {
     el.classList.remove('current_page_item');
   });
   li.classList.add('current_page_item');
+
+  if (isMobile()) {
+    document.querySelector('.menu-menu-1-container').classList.remove('open');
+  }
 });
 
 //-- Menu Mobile
