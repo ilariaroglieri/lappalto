@@ -43,10 +43,11 @@ function getAutoplay() {
   return EmblaCarouselAutoplay({ delay: 4000, stopOnInteraction: false });
 }
 
-const isMobile = () => window.matchMedia('(max-width: 768px').matches;
+const mqBreakpoint = window.matchMedia('(max-width: 640px)');
+const isMobile = () => mqBreakpoint.matches;
 
 function initSliders() {
-  // _embla = custom property 
+  // _embla = custom property
 
   // Home carousel (con fade)
   const homeCarousel = content.querySelector('.embla-slider-home');
@@ -70,6 +71,39 @@ function initSliders() {
   initArtistsAccordion();
 }
 
+// ----- RESET (usato al resize)
+function resetTriggers(selector) {
+  document.querySelectorAll(selector).forEach(el => {
+    const clone = el.cloneNode(true);
+    el.parentNode.replaceChild(clone, el);
+  });
+}
+
+function destroyAllSliders() {
+  content.querySelectorAll('.embla-slider, .embla-slider-home').forEach(s => {
+    if (s._embla) {
+      s._embla.destroy();
+      s._embla = null;
+    }
+  });
+}
+
+function resetArtistsAccordion() {
+  document.querySelectorAll('#artists-contents > div').forEach(a => {
+    a.classList.remove('open');
+    a.querySelector('.artist-el')?.classList.remove('open');
+  });
+  document.querySelectorAll('.artist-list-btn').forEach(i => i.classList.remove('active'));
+  resetTriggers('.artist-title.row-btn');
+  resetTriggers('.artist-list-btn');
+}
+
+function resetExhibitsAccordion() {
+  content.querySelectorAll('.exhibition-element').forEach(ex => ex.classList.remove('open'));
+  resetTriggers('.exhibition-element .row-btn');
+}
+
+// ----- ARTISTS ACCORDION
 function initArtistsAccordion() {
   const artists = document.querySelectorAll('#artists-contents > div');
   if (!artists.length) return;
@@ -88,7 +122,7 @@ function initArtistsAccordion() {
         // Chiudi tutti e distruggi i loro slider
         artists.forEach(a => {
           a.classList.remove('open');
-          artistContents.classList.remove('open');
+          a.querySelector('.artist-el')?.classList.remove('open');
           const s = a.querySelector('.embla-slider');
           if (s?._embla) {
             s._embla.destroy();
@@ -98,6 +132,7 @@ function initArtistsAccordion() {
 
         // Se non era già aperto, apri questo e inizializza lo slider
         if (!isAlreadyOpen) {
+          artist.classList.add('open');
           artistContents.classList.add('open');
           if (sliderEl && !sliderEl._embla) {
             sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
@@ -112,6 +147,7 @@ function initArtistsAccordion() {
       const target = document.querySelector(hash);
       if (target) {
         target.classList.add('open');
+        target.querySelector('.artist-el')?.classList.add('open');
         const sliderEl = target.querySelector('.embla-slider');
         if (sliderEl && !sliderEl._embla) {
           sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
@@ -181,12 +217,13 @@ function initArtistsScrollSpy(artists, listItems) {
   artists.forEach(artist => observer.observe(artist));
 }
 
+// ----- EXHIBITS ACCORDION
 function initExhibitsAccordion() {
   const exhibitions = content.querySelectorAll('.exhibition-element');
   if (!exhibitions.length) return;
 
   exhibitions.forEach((ex, index) => {
-    const triggers = ex.querySelectorAll('.row-btn'); 
+    const triggers = ex.querySelectorAll('.row-btn');
     const sliderEl = ex?.querySelector('.embla-slider');
 
     if (!triggers || !ex || !sliderEl) return;
@@ -195,14 +232,14 @@ function initExhibitsAccordion() {
       // su mobile: tutti aperti, no autoplay
       ex.classList.add('open');
       if (!sliderEl._embla) {
-        sliderEl._embla = EmblaCarousel(sliderEl, {align: 'center'}, []);
+        sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
       }
     } else {
-    // Apri il primo, chiudi gli altri
+      // Apri il primo, chiudi gli altri
       if (index === 0) {
         ex.classList.add('open');
         if (!sliderEl._embla) {
-          sliderEl._embla = EmblaCarousel(sliderEl, {align: 'start'}, [getAutoplay()]);
+          sliderEl._embla = EmblaCarousel(sliderEl, { align: 'start' }, [getAutoplay()]);
         }
       } else {
         ex.classList.remove('open');
@@ -229,27 +266,31 @@ function initExhibitsAccordion() {
           }
         });
       });
-    };
+    }
   });
 }
+
+// ----- BREAKPOINT CHANGE
+mqBreakpoint.addEventListener('change', () => {
+  destroyAllSliders();
+  resetArtistsAccordion();
+  resetExhibitsAccordion();
+  initSliders();
+});
 
 // ----- DYNAMIC PAGE LOAD
 async function navigateTo(url) {
   applyPositions();
-  // content.classList.remove('fadein');
 
   const response = await fetch(url);
   const html = await response.text();
   const parser = new DOMParser();
   const newDoc = parser.parseFromString(html, 'text/html');
 
-  // await new Promise(resolve => setTimeout(resolve, 500));
-  // content.classList.add('fadein');
-
   document.title = newDoc.title;
   content.innerHTML = newDoc.querySelector('main').innerHTML;
   history.pushState({}, '', url);
-  
+
   // re-init sliders
   initSliders();
 }
@@ -269,6 +310,7 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
 
   if (isMobile()) {
     document.querySelector('.menu-menu-1-container').classList.remove('open');
+    document.querySelector('#menu-btn a').textContent = document.querySelector('#menu-btn a').dataset.close;
   }
 });
 
@@ -279,13 +321,12 @@ document.querySelector('#menu-btn a').addEventListener('click', e => {
   const nav = document.querySelector('.menu-menu-1-container');
   const isOpen = nav.classList.toggle('open');
   btn.textContent = isOpen ? btn.dataset.open : btn.dataset.close;
-})
-
+});
 
 //----- loading content
 document.addEventListener('DOMContentLoaded', () => {
-  EmblaCarousel.globalOptions = { 
-    loop: true, 
+  EmblaCarousel.globalOptions = {
+    loop: true,
     align: isMobile() ? 'center' : 'start'
   };
 
@@ -294,4 +335,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   content.classList.add('loaded');
   initSliders();
-})
+});
