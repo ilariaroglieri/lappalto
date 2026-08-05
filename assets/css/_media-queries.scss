@@ -66,10 +66,11 @@
 @media screen and (max-width: $mobile) {
   body {
     overflow-x: hidden;
+    line-height: 1.2;
   }
 
   .s-regular {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .s-small {
@@ -128,7 +129,7 @@
       ul {
         width: 100%;
         display: inline-block;
-        padding: $half-spacing*7 calc(#{$half-spacing} + #{$half-spacing}/2) 0;
+        padding: calc(#{$half-spacing}*5 + #{$half-spacing}/2) calc(#{$half-spacing} + #{$half-spacing}/2) 0;
         li {
           @extend .m-whole;
         }
@@ -147,9 +148,13 @@
     }
     .intro-text {
       order:2;
+      padding-top: 0;
       margin-top: 0;
       transform: translateX(0);
       padding-bottom: $double-spacing;
+    }
+    #home-slider {
+      overflow: hidden;
     }
   }
 
@@ -172,12 +177,12 @@
         overflow: visible;
         .embla-slider {
           .embla-slide {
-            height: calc(6/12 * 100vw * 1.1);
+            height: calc(7/12 * 100vw * 1.1);
             &.portrait {
-              --slide-size: calc(#{$col} * 6 - #{$spacing});
+              --slide-size: calc(#{$col} * 7 - #{$spacing});
             }
             &.landscape {
-              --slide-size: calc(#{$col} * 10 - #{$spacing});
+              --slide-size: calc(#{$col} * 11 - #{$spacing});
             }
           }
         }
@@ -211,19 +216,19 @@
         width: calc(100% + #{$half-spacing}*6);
         transform: translateX(calc(#{$half-spacing} * - #{$half-spacing}/2));
         .embla-slide {
-          height: calc(6/12 * 100vw * 1.1);
+          height: calc(7/12 * 100vw * 1.1);
           &.portrait {
-            --slide-size: calc(#{$col} * 6 - #{$spacing});
+            --slide-size: calc(#{$col} * 7 - #{$spacing});
           }
           &.landscape {
-            --slide-size: calc(#{$col} * 10 - #{$spacing});
+            --slide-size: calc(#{$col} * 11 - #{$spacing});
           }
           .img-caption {
             font-size: 12px;
           }
         }
       }
-      .artists-texts {
+      .artist-texts {
         padding-right: 0;
       }
     }

@@ -203,11 +203,15 @@ li {
   position: relative;
 }
 
+.overlay {
+  z-index: 1000000;
+}
+
 header {
   margin-top: $spacing;
   margin-bottom: $spacing;
   position: relative;
-  z-index: 100000;
+  @extend .overlay;
   #site-url {
     position: relative;
     z-index: 1;
@@ -407,7 +411,7 @@ div[class*=embla-slider] {
 
 #site_logo {
   position: fixed;
-  width: clamp(80px, #{$col}, #{$col});
+  width: clamp(80px, 7%, 7%);
   bottom: calc(#{$spacing} + #{$half-spacing}/2);
   right: calc(#{$spacing} + #{$half-spacing}/2);
 }

@@ -23,8 +23,8 @@
 
       <div id="content-artists" class="content spacing-m-b-1">
         <div class="d-flex m-column end">
-          <div id="artists-list" class="d-3-twelfth t-half m-hidden">
-            <ul>
+          <div id="artists-list" class="d-3-twelfth t-half m-hidden p-relative">
+            <ul class="p-relative overlay">
               <?php foreach ($artists as $artist): ?>
                 <li class="artist-list-btn" data-title="<?= $artist->slug ?>"><?= $artist->post_title ?></li>
               <?php endforeach; ?>
@@ -37,7 +37,7 @@
 
                 <div class="artist-el">
                   <?php if ($artist->carousel): ?>
-                    <div class="artist-carousel-row spacing-b-2 spacing-m-t-1">
+                    <div class="artist-carousel-row spacing-b-4 spacing-m-b-2 spacing-m-t-1">
                       <div class="embla-slider spacing-p-b-4">
                         <div class="embla-track">
                           <?php foreach( $artist->carousel as $i => $img ):

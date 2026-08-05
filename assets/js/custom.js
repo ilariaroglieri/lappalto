@@ -40,7 +40,7 @@ function applyPositions() {
 
 // ----- SLIDER
 function getAutoplay() {
-  return EmblaCarouselAutoplay({ delay: 4000, stopOnInteraction: false });
+  return EmblaCarouselAutoplay({ delay: 3000, stopOnInteraction: false });
 }
 
 const mqBreakpoint = window.matchMedia('(max-width: 640px)');
@@ -135,8 +135,15 @@ function initArtistsAccordion() {
           artist.classList.add('open');
           artistContents.classList.add('open');
           if (sliderEl && !sliderEl._embla) {
-            sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
+            sliderEl._embla = EmblaCarousel(sliderEl, { align: 'start' }, []);
           }
+
+          history.replaceState(null, '', `#${artist.id}`);
+
+          // Aspetta la fine della transizione prima di scrollare
+          artistContents.addEventListener('transitionend', () => {
+            artist.scrollIntoView({ behavior: 'smooth' });
+          }, { once: true });
         }
       });
     });
@@ -150,7 +157,7 @@ function initArtistsAccordion() {
         target.querySelector('.artist-el')?.classList.add('open');
         const sliderEl = target.querySelector('.embla-slider');
         if (sliderEl && !sliderEl._embla) {
-          sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
+          sliderEl._embla = EmblaCarousel(sliderEl, { align: 'start' }, []);
         }
         target.scrollIntoView();
       }
@@ -232,7 +239,7 @@ function initExhibitsAccordion() {
       // su mobile: tutti aperti, no autoplay
       ex.classList.add('open');
       if (!sliderEl._embla) {
-        sliderEl._embla = EmblaCarousel(sliderEl, { align: 'center' }, []);
+        sliderEl._embla = EmblaCarousel(sliderEl, { align: 'start' }, []);
       }
     } else {
       // Apri il primo, chiudi gli altri
@@ -327,7 +334,7 @@ document.querySelector('#menu-btn a').addEventListener('click', e => {
 document.addEventListener('DOMContentLoaded', () => {
   EmblaCarousel.globalOptions = {
     loop: true,
-    align: isMobile() ? 'center' : 'start'
+    align: 'start'
   };
 
   // posizioni iniziali immediate

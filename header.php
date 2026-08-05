@@ -13,14 +13,13 @@
 
 		<meta charset="<?php bloginfo( 'charset' ); ?>"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
+		<meta name="description" content="<?= get_field('seo_description'); ?>">
 		
 		<title><?php bloginfo( 'name' ); ?><?php wp_title( '—', true, 'left' ); ?></title>
 
 		<link rel="profile" href="http://gmpg.org/xfn/11"/>
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"/>
 
-		<!-- <link rel="stylesheet" href="<?php echo home_url( '/assets/css/style.css' ); ?>" type="text/css">	 -->
 		<?php wp_head(); ?>
 	</head>
 

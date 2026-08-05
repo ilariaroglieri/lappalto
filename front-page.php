@@ -21,11 +21,10 @@
             <h3 class="latest-ex-artists"><?= $toShow['currExhibition']['artist'] ?></h3>
           </div>
 
-
           <?php // home carousel
           $carousel = get_field('home_carousel'); ?>
 
-          <div id="home-slider" class="p-fixed full-width"> 
+          <div id="home-slider" class="p-absolute"> 
             <div class="d-flex flex-row">
               <div class="d-5-twelfth t-two-thirds m-whole">
 
