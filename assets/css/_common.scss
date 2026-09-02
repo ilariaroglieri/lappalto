@@ -30,8 +30,9 @@ $secColor: #fffff7;
 // GRID SYSTEM
 // =============================
 
+$bodySpacing: 15px;
 $spacing: 12px;
-$half-spacing: $spacing / 2;
+$half-spacing: calc($spacing / 2);
 $double-spacing: $spacing * 2;
 $triple-spacing: $spacing * 3;
 $fourfold-spacing: $spacing * 4;
@@ -77,7 +78,7 @@ $d-aliases: (
 
 $spacing-scale: (
   0: 0,
-  half: $half-spacing / 2,
+  half: calc($half-spacing / 2),
   1: $half-spacing,
   2: $spacing,
   3: $half-spacing * 3,

@@ -107,6 +107,7 @@
   }
 
   header {
+    margin-bottom: 0;
     #menu-btn {
       display: flex !important;
       justify-content: flex-end;
@@ -117,13 +118,15 @@
       display: inherit;
       position: fixed;
       top: 0;
-      right: -100vw;
+      right: 0;
+      opacity: 0;
+      pointer-events: none;
       width: 100vw;
       height: 100dvh;
       background-color: white;
       background-image: url('../img/monogram_LA.svg');
       background-repeat: no-repeat;
-      background-size: calc(#{$col} * 4);
+      background-size: calc(#{$col} * 3.5);
       background-position: bottom $half-spacing*3 right $half-spacing*3;
       transition: all .5s;
       ul {
@@ -135,7 +138,8 @@
         }
       }
       &.open {
-        right: 0;
+        opacity: 1;
+        pointer-events: all;
       }
     }
   }
@@ -189,7 +193,6 @@
       }
     }
   }
-
   #content-artists {
     margin-right: 9px;
     #artists-contents {
@@ -213,8 +216,7 @@
         }
       }
       .artist-carousel-row .embla-slider {
-        width: calc(100% + #{$half-spacing}*6);
-        transform: translateX(calc(#{$half-spacing} * - #{$half-spacing}/2));
+        width: calc(100% + $half-spacing * 6);    
         .embla-slide {
           height: calc(7/12 * 100vw * 1.1);
           &.portrait {
@@ -236,6 +238,10 @@
 
   #site_logo {
     display: none;
+  }
+
+  #overlay-container {
+    z-index: 1000000;
   }
 }
 
