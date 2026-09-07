@@ -16,6 +16,7 @@
 
             $status = '';
             $file = get_field('pdf_file');
+            $file2 = get_field('pdf_file_2');
             $cats = get_the_category();
 
             if ($startD <= $today && $today <= $endD):
@@ -42,9 +43,13 @@
               <div class="entry-artists-el">
                 <h3 class="entry-artists <?= $carousel ? 'row-btn' : ''?>"><?= get_field('artist'); ?></h3>
               </div>
-              <div class="entry-download-el">
+              <div class="entry-download-el d-flex d-column">
                 <?php if ($file): ?>
-                  <a href="<?= $file['url'] ?>" class="entry-download underlined">Download PDF</a>
+                  <a href="<?= $file['url'] ?>" class="entry-download underlined"><?php _e("Presentazione della mostra", 'lappalto-theme'); ?></a>
+                <?php endif; ?>
+
+                <?php if ($file2): ?>
+                  <a href="<?= $file2['url'] ?>" class="entry-download underlined"><?php _e("Catalogo", 'lappalto-theme'); ?></a>
                 <?php endif; ?>
               </div>
             </div>

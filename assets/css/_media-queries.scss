@@ -241,7 +241,15 @@
   }
 
   #overlay-container {
-    z-index: 1000000;
   }
+
+  #overlay-container {
+    z-index: 1000000;
+    .overlay-bar {
+      &.w-5, &.w-1, &.w-2, &.w-3, &.w-4 {
+        width: 25vw;
+      }
+    }
+  } 
 }
 

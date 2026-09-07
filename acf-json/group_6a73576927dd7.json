@@ -20,7 +20,8 @@
             "maxlength": "",
             "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "wpml_cf_preferences": 2
         }
     ],
     "location": [
@@ -35,7 +36,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "seo"
+                "value": ""
             }
         ]
     ],
@@ -48,5 +49,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785944637
+    "acfml_field_group_mode": "translation",
+    "modified": 1788794338
 }

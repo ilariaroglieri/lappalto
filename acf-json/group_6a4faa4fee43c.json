@@ -20,7 +20,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "wpml_cf_preferences": 2
         },
         {
             "key": "field_6a4faa87f1917",
@@ -38,7 +39,8 @@
             },
             "display_format": "d\/m\/Y",
             "return_format": "j F Y",
-            "first_day": 1
+            "first_day": 1,
+            "wpml_cf_preferences": 1
         },
         {
             "key": "field_6a68c8f623536",
@@ -56,11 +58,12 @@
             },
             "display_format": "d\/m\/Y",
             "return_format": "j F Y",
-            "first_day": 1
+            "first_day": 1,
+            "wpml_cf_preferences": 1
         },
         {
             "key": "field_6a4faaafd66cb",
-            "label": "Pdf for download",
+            "label": "Presentazione della mostra",
             "name": "pdf_file",
             "aria-label": "",
             "type": "file",
@@ -76,7 +79,29 @@
             "library": "all",
             "min_size": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_6a9ec0f435967",
+            "label": "Catalogo",
+            "name": "pdf_file_2",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "",
+            "wpml_cf_preferences": 1
         },
         {
             "key": "field_6a68e3f9f5d3e",
@@ -104,7 +129,8 @@
             "max_size": "",
             "mime_types": "",
             "insert": "append",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "wpml_cf_preferences": 1
         }
     ],
     "location": [
@@ -128,5 +154,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785259026
+    "acfml_field_group_mode": "translation",
+    "modified": 1788794314
 }

@@ -344,9 +344,6 @@ div[class*=embla-slider] {
       }
     }
     &.open {
-      .exhibition-row-header {
-        pointer-events: none;
-      }
       .exhibition-carousel-row  {
         max-height: 50vh;
         opacity: 1;

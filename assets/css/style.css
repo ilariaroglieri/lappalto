@@ -719,9 +719,6 @@ div[class*=embla-slider] .embla-track .embla-slide {
   height: 100%;
   width: 100%;
 }
-#content-exhibitions .exhibition-element.open .exhibition-row-header {
-  pointer-events: none;
-}
 #content-exhibitions .exhibition-element.open .exhibition-carousel-row {
   max-height: 50vh;
   opacity: 1;
@@ -1037,6 +1034,9 @@ div[class*=embla-slider] .embla-track .embla-slide {
   }
   #overlay-container {
     z-index: 1000000;
+  }
+  #overlay-container .overlay-bar.w-5, #overlay-container .overlay-bar.w-1, #overlay-container .overlay-bar.w-2, #overlay-container .overlay-bar.w-3, #overlay-container .overlay-bar.w-4 {
+    width: 25vw;
   }
 }
 

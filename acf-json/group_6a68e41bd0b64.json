@@ -18,7 +18,8 @@
             },
             "message": "At the bottom of the page, an exhibition will be displayed automatically according to the following priority: ongoing > incoming > latest exhibition",
             "new_lines": "wpautop",
-            "esc_html": 0
+            "esc_html": 0,
+            "wpml_cf_preferences": 2
         },
         {
             "key": "field_6a68e41c4db34",
@@ -46,7 +47,8 @@
             "max_size": "",
             "mime_types": "",
             "insert": "append",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "wpml_cf_preferences": 1
         }
     ],
     "location": [
@@ -67,5 +69,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785860956
+    "acfml_field_group_mode": "translation",
+    "modified": 1788794324
 }

@@ -30,26 +30,6 @@
   add_action( 'init', 'rename_default_post_object' );
 
 
-  $args = [
-    'post_type'      => 'exhibition',
-    'posts_per_page' => -1,
-    'meta_key'       => 'starting_date',
-    'orderby'        => 'meta_value',
-    'order'          => 'ASC',
-  ];
-
-  function orderExhibitions( $query ) {
-    if ( ! is_admin() && $query->is_main_query() && is_home() ) {
-      $query->set( 'posts_per_page', -1 );
-      $query->set( 'meta_key', 'starting_date');
-      $query->set( 'orderby','meta_value');
-      $query->set( 'order','DESC');
-      return;
-    }
-  }
-  add_action( 'pre_get_posts', 'orderExhibitions', 1 );
-
-
   // artist post type
   // Register Custom Post Type
 function artist_post_type() {
@@ -59,7 +39,7 @@ function artist_post_type() {
     'singular_name'         => _x( 'Artist', 'Post Type Singular Name', 'text_domain' ),
     'menu_name'             => __( 'Artists', 'text_domain' ),
     'name_admin_bar'        => __( 'Artist', 'text_domain' ),
-    'archives'              => __( 'Item Archives', 'text_domain' ),
+    'archives'              => __( 'Artists Archive', 'text_domain' ),
     'attributes'            => __( 'Item Attributes', 'text_domain' ),
     'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
     'all_items'             => __( 'All Items', 'text_domain' ),

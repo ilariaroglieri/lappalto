@@ -61,8 +61,7 @@ function initSliders() {
     if (isMobile()) {
       singleCarousel._embla = EmblaCarousel(singleCarousel, {}, []);
     } else {
-      // singleCarousel._embla = EmblaCarousel(singleCarousel, {}, [getAutoplay()]);
-      singleCarousel._embla = EmblaCarousel(singleCarousel, {}, []);
+      singleCarousel._embla = EmblaCarousel(singleCarousel, {}, [getAutoplay()]);
     }
   }
 
@@ -295,6 +294,15 @@ async function navigateTo(url) {
   const parser = new DOMParser();
   const newDoc = parser.parseFromString(html, 'text/html');
 
+  content.innerHTML = newDoc.querySelector('main').innerHTML;
+
+  // aggiorna anche il language switcher
+  const newSwitcher = newDoc.querySelector('.wpml-ls-menu-item');
+  const currentSwitcher = document.querySelector('.wpml-ls-menu-item');
+  if (newSwitcher && currentSwitcher) {
+    currentSwitcher.innerHTML = newSwitcher.innerHTML;
+  }
+
   document.title = newDoc.title;
   content.innerHTML = newDoc.querySelector('main').innerHTML;
   history.pushState({}, '', url);
@@ -308,6 +316,10 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
   const li = e.target.closest('li');
   const link = e.target.closest('a');
   if (!link) return;
+
+  // ignore wpml
+  if (link.closest('.wpml-ls-item')) return;
+
   e.preventDefault();
   navigateTo(link.href);
 
