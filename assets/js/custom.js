@@ -294,18 +294,16 @@ async function navigateTo(url) {
   const parser = new DOMParser();
   const newDoc = parser.parseFromString(html, 'text/html');
 
+  document.title = newDoc.title;
   content.innerHTML = newDoc.querySelector('main').innerHTML;
+  history.pushState({}, '', url);
 
-  // aggiorna anche il language switcher
+  // aggiorna la url del language switcher
   const newSwitcher = newDoc.querySelector('.wpml-ls-menu-item');
   const currentSwitcher = document.querySelector('.wpml-ls-menu-item');
   if (newSwitcher && currentSwitcher) {
     currentSwitcher.innerHTML = newSwitcher.innerHTML;
   }
-
-  document.title = newDoc.title;
-  content.innerHTML = newDoc.querySelector('main').innerHTML;
-  history.pushState({}, '', url);
 
   // re-init sliders
   initSliders();

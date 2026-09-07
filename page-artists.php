@@ -9,6 +9,7 @@
         'meta_key'       => 'artist_surname',
         'orderby'        => 'meta_value',
         'order'          => 'ASC',
+        'suppress_filters' => false, // wpml
       ]);
 
       foreach ( $artists as $artist ) :
@@ -22,8 +23,8 @@
     ?>
 
       <div id="content-artists" class="content spacing-m-b-1">
-        <div class="d-flex m-column end">
-          <div id="artists-list" class="d-3-twelfth t-half m-hidden p-relative">
+        <div class="d-flex flex-row m-column end">
+          <div id="artists-list" class="d-half m-hidden p-relative">
             <ul class="p-relative overlay">
               <?php foreach ($artists as $artist): ?>
                 <li class="artist-list-btn" data-title="<?= $artist->slug ?>"><?= $artist->post_title ?></li>
