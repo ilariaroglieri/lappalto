@@ -110,40 +110,33 @@ function initArtistsAccordion() {
 
   if (isMobile()) {
     // Mobile: nessun init, tutto delegato ai trigger accordion
-    artists.forEach(artist => {
+    artists.forEach((artist, index) => {
       const trigger = artist.querySelector('.artist-title.row-btn');
       const artistContents = artist.querySelector('.artist-el');
       const sliderEl = artist.querySelector('.embla-slider');
+
+      // inizializza subito tutti gli slider
+      if (sliderEl && !sliderEl._embla) {
+        sliderEl._embla = EmblaCarousel(sliderEl, { align: 'start' }, []);
+      }
+
       if (!trigger) return;
 
       trigger.addEventListener('click', () => {
         const isAlreadyOpen = artist.classList.contains('open');
 
-        // Chiudi tutti e distruggi i loro slider
+        // chiudi tutti
         artists.forEach(a => {
           a.classList.remove('open');
           a.querySelector('.artist-el')?.classList.remove('open');
-          const s = a.querySelector('.embla-slider');
-          if (s?._embla) {
-            s._embla.destroy();
-            s._embla = null;
-          }
         });
 
-        // Se non era già aperto, apri questo e inizializza lo slider
+        // apri questo se non era già aperto
         if (!isAlreadyOpen) {
           artist.classList.add('open');
           artistContents.classList.add('open');
-          if (sliderEl && !sliderEl._embla) {
-            sliderEl._embla = EmblaCarousel(sliderEl, { align: 'start' }, []);
-          }
-
           history.replaceState(null, '', `#${artist.id}`);
-
-          // Aspetta la fine della transizione prima di scrollare
-          artistContents.addEventListener('transitionend', () => {
-            artist.scrollIntoView({ behavior: 'smooth' });
-          }, { once: true });
+          artist.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });

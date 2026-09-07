@@ -194,7 +194,7 @@
     }
   }
   #content-artists {
-    margin-right: 9px;
+    margin-left: 18px;
     #artists-contents {
       width: calc(100% - #{$spacing});
       margin-right: 3px;
@@ -207,16 +207,17 @@
       .artist-el {
         opacity: 0;
         max-height: 0;
-        transition: all 1s;
+        transition: all .5s;
         overflow: hidden;
         &.open {
           opacity: 1;
-          max-height: 300vh;
+          max-height: 600vh;
           overflow: visible;
+          transition: all 1s;
         }
       }
       .artist-carousel-row .embla-slider {
-        width: calc(100% + $half-spacing * 6);    
+        width: calc(100% + $half-spacing * 4);    
         .embla-slide {
           height: calc(7/12 * 100vw * 1.1);
           &.portrait {

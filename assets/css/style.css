@@ -988,7 +988,7 @@ div[class*=embla-slider] .embla-track .embla-slide {
     --slide-size: calc(8.3333% * 11 - 12px);
   }
   #content-artists {
-    margin-right: 9px;
+    margin-left: 18px;
   }
   #content-artists #artists-contents {
     width: calc(100% - 12px);
@@ -1003,16 +1003,17 @@ div[class*=embla-slider] .embla-track .embla-slide {
   #content-artists #artists-contents .artist-el {
     opacity: 0;
     max-height: 0;
-    transition: all 1s;
+    transition: all 0.5s;
     overflow: hidden;
   }
   #content-artists #artists-contents .artist-el.open {
     opacity: 1;
-    max-height: 300vh;
+    max-height: 600vh;
     overflow: visible;
+    transition: all 1s;
   }
   #content-artists #artists-contents .artist-carousel-row .embla-slider {
-    width: calc(100% + 36px);
+    width: calc(100% + 24px);
   }
   #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide {
     height: 64.1666666667vw;
