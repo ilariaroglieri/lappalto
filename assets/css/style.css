@@ -628,6 +628,7 @@ header div[class*=menu-1] ul li.wpml-ls-item {
   width: unset;
   position: absolute;
   right: 6px;
+  text-transform: uppercase;
 }
 
 main {
