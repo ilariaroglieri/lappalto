@@ -735,7 +735,12 @@ div[class*=embla-slider] .embla-track .embla-slide {
 }
 
 #content-artists {
-  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 3fr 3fr 6fr;
+  gap: 6px;
+}
+#content-artists #artists-list {
+  margin-left: 8px;
 }
 #content-artists #artists-list .artist-list-btn {
   cursor: pointer;
@@ -751,8 +756,6 @@ div[class*=embla-slider] .embla-track .embla-slide {
   pointer-events: none;
 }
 #content-artists #artists-contents {
-  width: 50%;
-  margin-right: 0;
   overflow-y: scroll;
   height: calc(100dvh - 45px);
 }
@@ -918,7 +921,7 @@ div[class*=embla-slider] .embla-track .embla-slide {
   .d-flex.m-column-reverse {
     flex-flow: column-reverse;
   }
-  .m-whole, header div[class*=menu-1] ul li {
+  .m-whole {
     width: calc(100% - 12px);
     margin-left: 6px;
     margin-right: 6px;
@@ -930,12 +933,12 @@ div[class*=embla-slider] .embla-track .embla-slide {
   }
   header {
     margin-bottom: 0;
+    grid-template-columns: 1fr 1fr;
   }
   header #menu-btn {
-    display: flex !important;
-    justify-content: flex-end;
     position: relative;
     z-index: 1;
+    text-align: right;
   }
   header div[class*=menu-1] {
     display: inherit;
@@ -956,7 +959,10 @@ div[class*=embla-slider] .embla-track .embla-slide {
   header div[class*=menu-1] ul {
     width: 100%;
     display: inline-block;
-    padding: calc(6px * 5 + 6px / 2) calc(6px + 6px / 2) 0;
+    padding: 33px 15px 0;
+  }
+  header div[class*=menu-1] ul li.wpml-ls-item {
+    position: static;
   }
   header div[class*=menu-1].open {
     opacity: 1;
@@ -1001,7 +1007,8 @@ div[class*=embla-slider] .embla-track .embla-slide {
     --slide-size: calc(8.3333% * 11 - 12px);
   }
   #content-artists {
-    margin-left: 18px;
+    margin-left: 12px;
+    grid-template-columns: 1fr;
   }
   #content-artists #artists-contents {
     width: calc(100% - 12px);
@@ -1024,9 +1031,6 @@ div[class*=embla-slider] .embla-track .embla-slide {
     max-height: 600vh;
     overflow: visible;
     transition: all 1s;
-  }
-  #content-artists #artists-contents .artist-carousel-row .embla-slider {
-    width: calc(100% + 24px);
   }
   #content-artists #artists-contents .artist-carousel-row .embla-slider .embla-slide {
     height: 64.1666666667vw;

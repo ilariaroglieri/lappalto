@@ -362,8 +362,11 @@ div[class*=embla-slider] {
 }
 
 #content-artists {
-  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 3fr 3fr 6fr;
+  gap: $half-spacing;
   #artists-list {
+    margin-left: 8px;
     .artist-list-btn {
       cursor: pointer;
       opacity: 1;
@@ -379,8 +382,6 @@ div[class*=embla-slider] {
     }
   }
   #artists-contents {
-    width: 50%;
-    margin-right: 0;
     overflow-y: scroll;
     height: calc(100dvh - 45px); //header height
     .artist-el {

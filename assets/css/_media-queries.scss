@@ -114,11 +114,11 @@
 
   header {
     margin-bottom: 0;
+    grid-template-columns: 1fr 1fr;
     #menu-btn {
-      display: flex !important;
-      justify-content: flex-end;
       position: relative;
       z-index: 1;
+      text-align: right;
     }
     div[class*="menu-1"]{
       display: inherit;
@@ -138,9 +138,9 @@
       ul {
         width: 100%;
         display: inline-block;
-        padding: calc(#{$half-spacing}*5 + #{$half-spacing}/2) calc(#{$half-spacing} + #{$half-spacing}/2) 0;
-        li {
-          @extend .m-whole;
+        padding: calc($half-spacing*5 + $half-spacing/2) calc($spacing + $half-spacing/2) 0;
+        li.wpml-ls-item {
+          position: static;
         }
       }
       &.open {
@@ -200,7 +200,8 @@
     }
   }
   #content-artists {
-    margin-left: 18px;
+    margin-left: $spacing;
+    grid-template-columns: 1fr;
     #artists-contents {
       width: calc(100% - #{$spacing});
       margin-right: 3px;
@@ -222,8 +223,7 @@
           transition: all 1s;
         }
       }
-      .artist-carousel-row .embla-slider {
-        width: calc(100% + $half-spacing * 4);    
+      .artist-carousel-row .embla-slider { 
         .embla-slide {
           height: calc(7/12 * 100vw * 1.1);
           &.portrait {
