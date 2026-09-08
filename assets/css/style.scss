@@ -201,7 +201,7 @@ li {
   width: 100%;
 }
 
-.flex-row{
+.flex-row {
   margin-right: -#{$half-spacing};
   margin-left: -#{$half-spacing};
   position: relative;
@@ -212,10 +212,13 @@ li {
 }
 
 header {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: $spacing;
+  @extend .overlay;
   margin-top: $spacing;
   margin-bottom: $spacing;
-  position: relative;
-  @extend .overlay;
   #site-url {
     position: relative;
     z-index: 1;
@@ -225,7 +228,6 @@ header {
     ul {
       display: contents;
       li {
-        @extend .d-3-twelfth;
         &.current_page_item a {
           pointer-events: none;
           opacity: .45;
@@ -235,6 +237,11 @@ header {
           &:hover {
             opacity: .45;
           }
+        }
+        &.wpml-ls-item {
+          width: unset;
+          position: absolute;
+          right: $half-spacing;
         }
       }
     }

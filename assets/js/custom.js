@@ -300,6 +300,14 @@ async function navigateTo(url) {
 
   // re-init sliders
   initSliders();
+
+  // hide menu
+  if (isMobile()) {
+    document.querySelector('#menu-btn a').textContent = document.querySelector('#menu-btn a').dataset.close;
+    document.documentElement.classList.remove('blocked');
+    document.body.classList.remove('blocked');
+    document.querySelector('.menu-menu-1-container').classList.remove('open');
+  }
 }
 
 // intercetta i link del menu
@@ -318,13 +326,6 @@ document.querySelector('.menu-menu-1-container ul').addEventListener('click', e 
     el.classList.remove('current_page_item');
   });
   li.classList.add('current_page_item');
-
-  if (isMobile()) {
-    document.querySelector('.menu-menu-1-container').classList.remove('open');
-    document.querySelector('#menu-btn a').textContent = document.querySelector('#menu-btn a').dataset.close;
-    document.documentElement.classList.remove('blocked');
-    document.body.classList.remove('blocked');
-  }
 });
 
 //-- Menu Mobile

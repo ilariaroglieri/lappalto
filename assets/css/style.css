@@ -26,7 +26,7 @@ Version: 1.0
   margin: 0 6px;
 }
 
-.d-3-twelfth, header div[class*=menu-1] ul li {
+.d-3-twelfth {
   width: calc(8.3333% * 3 - 12px);
   margin: 0 6px;
 }
@@ -597,9 +597,12 @@ ul {
 }
 
 header {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 12px;
   margin-top: 12px;
   margin-bottom: 12px;
-  position: relative;
 }
 header #site-url {
   position: relative;
@@ -620,6 +623,11 @@ header div[class*=menu-1] ul li a {
 }
 header div[class*=menu-1] ul li a:hover {
   opacity: 0.45;
+}
+header div[class*=menu-1] ul li.wpml-ls-item {
+  width: unset;
+  position: absolute;
+  right: 6px;
 }
 
 main {
@@ -850,6 +858,11 @@ div[class*=embla-slider] .embla-track .embla-slide {
   }
   .d-flex.t-column-reverse {
     flex-flow: column-reverse;
+  }
+  .t-flex-row {
+    margin-right: -6px;
+    margin-left: -6px;
+    position: relative;
   }
   .t-whole {
     width: calc(100% - 12px);

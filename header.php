@@ -25,8 +25,8 @@
 
 	<body <?php body_class(); ?>>
 		<div class="container">
-			<header class="d-flex flex-row">
-				<div id="site-url" class="d-3-twelfth m-half">
+			<header>
+				<div id="site-url" class="m-half">
 					<a href="<?= home_url() ?>"><?php bloginfo( 'name' ); ?></a>
 				</div>
 				<div id="menu-btn" class="m-half m-visible">

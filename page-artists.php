@@ -23,8 +23,9 @@
     ?>
 
       <div id="content-artists" class="content spacing-m-b-1">
-        <div class="d-flex flex-row m-column end">
-          <div id="artists-list" class="d-half m-hidden p-relative">
+        <div class="inner-content">
+          <div></div>
+          <div id="artists-list" class="d-3-twelfth t-half m-hidden p-relative">
             <ul class="p-relative overlay">
               <?php foreach ($artists as $artist): ?>
                 <li class="artist-list-btn" data-title="<?= $artist->slug ?>"><?= $artist->post_title ?></li>

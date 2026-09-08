@@ -27,6 +27,12 @@
     }
   }
 
+  .t-flex-row{
+    margin-right: -#{$half-spacing};
+    margin-left: -#{$half-spacing};
+    position: relative;
+  }
+
   .t-whole {
     width: calc(100% - #{$spacing});
     margin-left: #{$half-spacing};
