@@ -73,7 +73,17 @@ function initSliders() {
 
 function initLightbox() {
   let gallery = new SimpleLightbox('.embla-slider a', {
-    overlayOpacity: 1
+    overlayOpacity: 1,
+    navText: ['prev','next'],
+    closeText: 'close',
+    animationSlide: false,
+    fadeSpeed: 200,
+    showCounter: false,
+    captionSelector: 'self',
+    captionType: 'data',
+    captionsData: 'caption',
+    widthRatio: 1,
+    heightRatio: 1
   });
 }
 

@@ -26,10 +26,10 @@
 
 	//enqueue css
 	function register_theme_styles() {
-	  wp_register_style( 'style', get_template_directory_uri() . '/assets/css/style.css' );
 	  wp_register_style( 'simple-lightbox-style', get_template_directory_uri() . '/assets/js/simplelightbox/simplelightbox.css' );
-	  wp_enqueue_style( 'style' );
+	  wp_register_style( 'style', get_template_directory_uri() . '/assets/css/style.css' );
 	  wp_enqueue_style( 'simple-lightbox-style' );
+	  wp_enqueue_style( 'style' );
 	}
 	add_action( 'wp_enqueue_scripts', 'register_theme_styles' );
 ?>

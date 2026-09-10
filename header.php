@@ -24,14 +24,12 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<div class="container">
-			<header>
-				<div id="site-url">
-					<a href="<?= home_url() ?>"><?php bloginfo( 'name' ); ?></a>
-				</div>
-				<div id="menu-btn" class="m-visible">
-					<a href="#" data-open="Close" data-close="Menu">Menu</a>
-				</div>
-				<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
-			</header>
-		</div>
+		<header>
+			<div id="site-url">
+				<a href="<?= home_url() ?>"><?php bloginfo( 'name' ); ?></a>
+			</div>
+			<div id="menu-btn" class="m-visible">
+				<a href="#" data-open="Close" data-close="Menu">Menu</a>
+			</div>
+			<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
+		</header>
