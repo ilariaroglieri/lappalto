@@ -242,7 +242,6 @@ header {
           width: unset;
           position: absolute;
           right: $half-spacing;
-          text-transform: uppercase;
         }
       }
     }
@@ -468,6 +467,10 @@ div[class*=embla-slider] {
     }
   }
 } 
+
+.sl-wrapper {
+  z-index: 10001;
+}
 
 
 @import 'media-queries';

@@ -60,11 +60,16 @@
                 <div class="embla-slider">
                   <div class="embla-track">
                     <?php foreach( $carousel as $i => $img ):
-                      $orientation = $img['width'] > $img['height'] ? 'landscape' : 'portrait'; ?>
+                      $orientation = $img['width'] > $img['height'] ? 'landscape' : 'portrait'; 
+                      $fullImg = wp_get_original_image_url( $img['ID'], 'full');
+                      $caption = $img['caption'];
+                    ?>
                       <div class="embla-slide <?= $orientation ?>">
-                        <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
-                          'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
-                        ]) ?>
+                        <a href="<?= $fullImg; ?>" data-caption="<?= $caption ?>">
+                          <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
+                            'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
+                          ]) ?>
+                        </a>
                       </div>
                     <?php endforeach ?>
                   </div>

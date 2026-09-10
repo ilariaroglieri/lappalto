@@ -628,7 +628,6 @@ header div[class*=menu-1] ul li.wpml-ls-item {
   width: unset;
   position: absolute;
   right: 6px;
-  text-transform: uppercase;
 }
 
 main {
@@ -840,6 +839,10 @@ div[class*=embla-slider] .embla-track .embla-slide {
 }
 #overlay-container .overlay-bar.w-4 {
   width: 25vw;
+}
+
+.sl-wrapper {
+  z-index: 10001;
 }
 
 @media screen and (max-width: 1440px) {

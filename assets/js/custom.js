@@ -71,6 +71,12 @@ function initSliders() {
   initArtistsAccordion();
 }
 
+function initLightbox() {
+  let gallery = new SimpleLightbox('.embla-slider a', {
+    overlayOpacity: 1
+  });
+}
+
 // ----- RESET (usato al resize)
 function resetTriggers(selector) {
   document.querySelectorAll(selector).forEach(el => {
@@ -355,4 +361,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   content.classList.add('loaded');
   initSliders();
+  initLightbox();
 });
