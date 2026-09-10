@@ -43,14 +43,17 @@
                       <div class="embla-track">
                         <?php foreach( $artist->carousel as $i => $img ):
                           $orientation = $img['width'] > $img['height'] ? 'landscape' : 'portrait'; 
-                          $caption = $img['caption']; ?>
+                          $fullImg = wp_get_original_image_url( $img['ID'], 'full');
+                          $meta = wp_get_attachment_metadata($img['ID']);
+                          $width = $meta['width'] ?? null;
+                          $height = $meta['height'] ?? null;
+                        ?>
                           <div class="embla-slide <?= $orientation ?>">
-                            <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
-                              'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
-                            ]) ?>
-                            <?php if ($caption):?>
-                              <p class="img-caption"><?= $caption ?></p>
-                            <?php endif; ?>
+                            <a href="<?= $fullImg; ?>" data-pswp-width="<?= $width; ?>" data-pswp-height="<?= $height; ?>">
+                              <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
+                                'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
+                              ]) ?>
+                            </a>
                           </div>
                         <?php endforeach ?>
                       </div>

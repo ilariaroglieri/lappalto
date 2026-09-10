@@ -71,20 +71,49 @@ function initSliders() {
   initArtistsAccordion();
 }
 
+// ----- LIGHTBOX
+let lightbox = null;
 function initLightbox() {
-  let gallery = new SimpleLightbox('.embla-slider a', {
-    overlayOpacity: 1,
-    navText: ['prev','next'],
-    closeText: 'close',
-    animationSlide: false,
-    fadeSpeed: 200,
-    showCounter: false,
-    captionSelector: 'self',
-    captionType: 'data',
-    captionsData: 'caption',
-    widthRatio: 1,
-    heightRatio: 1
+  if (lightbox) {
+    lightbox.destroy();
+    lightbox = null;
+  }
+
+  lightbox = new PhotoSwipeLightbox({
+    gallery: '.embla-slider',
+    children: 'a',
+    pswpModule: PhotoSwipe,
+    // disabilita zoom
+    allowPanToNext: false,
+    zoom: false,
+    pinchToClose: false,
+    closeOnVerticalDrag: false,
   });
+
+  lightbox.on('change', () => {
+    const link = lightbox.pswp.currSlide.data.element;
+    const sliderEl = link.closest('.embla-slider');
+    if (sliderEl?._embla) {
+      sliderEl._embla.scrollTo(lightbox.pswp.currIndex);
+    }
+  });
+
+  lightbox.on('afterInit', () => {
+    const link = lightbox.pswp.currSlide.data.element;
+    const sliderEl = link.closest('.embla-slider');
+    const autoplay = sliderEl?._embla?.plugins?.autoplay;
+    autoplay?.stop();
+  });
+
+  lightbox.on('close', () => {
+    const link = lightbox.pswp.currSlide.data.element;
+    const sliderEl = link.closest('.embla-slider');
+    // riprendi autoplay
+    const autoplay = sliderEl?._embla?.plugins?.autoplay;
+    autoplay?.play();
+  });
+
+  lightbox.init();
 }
 
 // ----- RESET (usato al resize)
@@ -292,6 +321,7 @@ mqBreakpoint.addEventListener('change', () => {
   resetArtistsAccordion();
   resetExhibitsAccordion();
   initSliders();
+  initLightbox();
 });
 
 // ----- DYNAMIC PAGE LOAD
@@ -316,6 +346,7 @@ async function navigateTo(url) {
 
   // re-init sliders
   initSliders();
+  initLightbox();
 
   // hide menu
   if (isMobile()) {

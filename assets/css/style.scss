@@ -191,8 +191,8 @@ li {
 
 .container {
   width: calc(100% - 30px);
-  margin-left: calc(#{$spacing} + #{$half-spacing}/2);
-  margin-right: calc(#{$spacing} + #{$half-spacing}/2);
+  margin-left: calc($spacing + $half-spacing/2);
+  margin-right: calc($spacing + $half-spacing/2);
 }
 
 .container-fluid {
@@ -202,13 +202,13 @@ li {
 }
 
 .flex-row {
-  margin-right: -#{$half-spacing};
-  margin-left: -#{$half-spacing};
+  margin-right: - $half-spacing;
+  margin-left: - $half-spacing;
   position: relative;
 }
 
 .overlay {
-  z-index: 1000000;
+  z-index: 10004;
 }
 
 header {
@@ -482,13 +482,13 @@ div[class*=embla-slider] {
     font-family: 'Diplomat';
     @extend .s-regular;
     width: auto;
-    right: 18px;
+    right: calc(spacing + half-spacing/2);
   }  
   .sl-navigation button.sl-prev {
     font-family: 'Diplomat';
     @extend .s-regular;
     width: auto;
-    left: 18px;
+    left: calc(spacing + half-spacing/2);
   }
   .sl-image .sl-caption {
     position: fixed;
@@ -498,7 +498,7 @@ div[class*=embla-slider] {
     @extend .s-regular;
     background: transparent;
     color: black;
-    padding: 18px;
+    padding: calc(spacing + half-spacing/2);
   }
 }
 .sl-overlay {

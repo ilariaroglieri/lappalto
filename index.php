@@ -62,10 +62,12 @@
                     <?php foreach( $carousel as $i => $img ):
                       $orientation = $img['width'] > $img['height'] ? 'landscape' : 'portrait'; 
                       $fullImg = wp_get_original_image_url( $img['ID'], 'full');
-                      $caption = $img['caption'];
+                      $meta = wp_get_attachment_metadata($img['ID']);
+                      $width = $meta['width'] ?? null;
+                      $height = $meta['height'] ?? null;
                     ?>
                       <div class="embla-slide <?= $orientation ?>">
-                        <a href="<?= $fullImg; ?>" data-caption="<?= $caption ?>">
+                        <a href="<?= $fullImg; ?>" data-pswp-width="<?= $width; ?>" data-pswp-height="<?= $height; ?>">
                           <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
                             'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
                           ]) ?>
