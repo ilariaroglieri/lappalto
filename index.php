@@ -45,11 +45,11 @@
               </div>
               <div class="entry-download-el d-flex d-column">
                 <?php if ($file): ?>
-                  <a href="<?= $file['url'] ?>" class="entry-download underlined"><?php _e("Presentazione della mostra", 'lappalto-theme'); ?></a>
+                  <a href="<?= $file['url'] ?>" class="entry-download underlined" target="_blank"><?php _e("Presentazione della mostra", 'lappalto-theme'); ?></a>
                 <?php endif; ?>
 
                 <?php if ($file2): ?>
-                  <a href="<?= $file2['url'] ?>" class="entry-download underlined"><?php _e("Catalogo", 'lappalto-theme'); ?></a>
+                  <a href="<?= $file2['url'] ?>" class="entry-download underlined" target="_blank"><?php _e("Catalogo", 'lappalto-theme'); ?></a>
                 <?php endif; ?>
               </div>
             </div>
@@ -67,7 +67,7 @@
                       $height = $meta['height'] ?? null;
                     ?>
                       <div class="embla-slide <?= $orientation ?>">
-                        <a href="<?= $fullImg; ?>" data-pswp-width="<?= $width; ?>" data-pswp-height="<?= $height; ?>">
+                        <a href="<?= $fullImg; ?>" data-pswp-width="<?= $width; ?>" data-pswp-height="<?= $height; ?>" data-caption=<?= $img['caption']; ?>>
                           <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
                             'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
                           ]) ?>

@@ -469,40 +469,35 @@ div[class*=embla-slider] {
   }
 } 
 
-.sl-wrapper {
-  z-index: 10500;
-  .sl-close {
-    font-family: 'Diplomat';
-    @extend .s-regular;
-    width: auto;
-    height: auto;
-    line-height: inherit;
-  }
-  .sl-navigation button.sl-next {
-    font-family: 'Diplomat';
-    @extend .s-regular;
-    width: auto;
-    right: calc(spacing + half-spacing/2);
-  }  
-  .sl-navigation button.sl-prev {
-    font-family: 'Diplomat';
-    @extend .s-regular;
-    width: auto;
-    left: calc(spacing + half-spacing/2);
-  }
-  .sl-image .sl-caption {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    @extend .s-regular;
-    background: transparent;
-    color: black;
-    padding: calc(spacing + half-spacing/2);
-  }
+// photoswipe
+.pswp__bg { 
+  background: #fff; 
 }
-.sl-overlay {
-  z-index: 10400;
+
+.pswp__button--close {
+  height: $double-spacing;
+  width: auto;
+  opacity: 1;
+  margin-top: $half-spacing;
+  margin-right: calc($spacing + $half-spacing/2);
+}
+
+.pswp__button--arrow {
+  width: auto;
+}
+
+.pswp__button--arrow--prev {
+  margin-left: calc($spacing + $half-spacing/2);
+}
+
+.pswp__button--arrow--next {
+  margin-right: calc($spacing + $half-spacing/2);
+}
+
+.pswp__custom-caption {
+  position: fixed;
+  margin-left: calc($spacing + $half-spacing/2);
+  bottom: $spacing;
 }
 
 

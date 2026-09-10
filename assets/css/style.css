@@ -8,7 +8,11 @@ Version: 1.0
   src: url("../fonts/DiplomatST-Regular.woff2") format("woff2"), url("../fonts/DiplomatST-Regular.woff") format("woff");
   font-weight: 400;
 }
-.s-regular, .sl-wrapper .sl-image .sl-caption, .sl-wrapper .sl-image .wysiwyg.sl-caption *, .sl-wrapper .sl-navigation button.sl-prev, .sl-wrapper .sl-navigation button.wysiwyg.sl-prev *, .sl-wrapper .sl-navigation button.sl-next, .sl-wrapper .sl-navigation button.wysiwyg.sl-next *, .sl-wrapper .sl-close, .sl-wrapper .wysiwyg.sl-close *, h1, h2, h3, h4, h1.wysiwyg *, h2.wysiwyg *, h3.wysiwyg *, h4.wysiwyg *, body, body.wysiwyg *, .wysiwyg.s-regular *, h1.wysiwyg *, h2.wysiwyg *, h3.wysiwyg *, h4.wysiwyg *, h1.wysiwyg .wysiwyg *, h2.wysiwyg .wysiwyg *, h3.wysiwyg .wysiwyg *, h4.wysiwyg .wysiwyg *, body.wysiwyg *, body.wysiwyg .wysiwyg * {
+.serif {
+  font-family: "Diplomat", serif;
+}
+
+.s-regular, h1, h2, h3, h4, h1.wysiwyg *, h2.wysiwyg *, h3.wysiwyg *, h4.wysiwyg *, body, body.wysiwyg *, .wysiwyg.s-regular *, h1.wysiwyg *, h2.wysiwyg *, h3.wysiwyg *, h4.wysiwyg *, h1.wysiwyg .wysiwyg *, h2.wysiwyg .wysiwyg *, h3.wysiwyg .wysiwyg *, h4.wysiwyg .wysiwyg *, body.wysiwyg *, body.wysiwyg .wysiwyg * {
   font-size: 1vw;
 }
 
@@ -842,41 +846,38 @@ div[class*=embla-slider] .embla-track .embla-slide {
   width: 25vw;
 }
 
-.sl-wrapper {
-  z-index: 10500;
-}
-.sl-wrapper .sl-close {
-  font-family: "Diplomat";
-  width: auto;
-  height: auto;
-  line-height: inherit;
-}
-.sl-wrapper .sl-navigation button.sl-next {
-  font-family: "Diplomat";
-  width: auto;
-  right: calc(spacing + half-spacing / 2);
-}
-.sl-wrapper .sl-navigation button.sl-prev {
-  font-family: "Diplomat";
-  width: auto;
-  left: calc(spacing + half-spacing / 2);
-}
-.sl-wrapper .sl-image .sl-caption {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: transparent;
-  color: black;
-  padding: calc(spacing + half-spacing / 2);
+.pswp__bg {
+  background: #fff;
 }
 
-.sl-overlay {
-  z-index: 10400;
+.pswp__button--close {
+  height: 24px;
+  width: auto;
+  opacity: 1;
+  margin-top: 6px;
+  margin-right: 15px;
+}
+
+.pswp__button--arrow {
+  width: auto;
+}
+
+.pswp__button--arrow--prev {
+  margin-left: 15px;
+}
+
+.pswp__button--arrow--next {
+  margin-right: 15px;
+}
+
+.pswp__custom-caption {
+  position: fixed;
+  margin-left: 15px;
+  bottom: 12px;
 }
 
 @media screen and (max-width: 1440px) {
-  .s-regular, .wysiwyg.s-regular *, body, body.wysiwyg *, h1, h2, h3, h4, h1.wysiwyg *, h2.wysiwyg *, h3.wysiwyg *, h4.wysiwyg *, .sl-wrapper .sl-close, .sl-wrapper .wysiwyg.sl-close *, .sl-wrapper .sl-navigation button.sl-next, .sl-wrapper .sl-navigation button.wysiwyg.sl-next *, .sl-wrapper .sl-navigation button.sl-prev, .sl-wrapper .sl-navigation button.wysiwyg.sl-prev *, .sl-wrapper .sl-image .sl-caption, .sl-wrapper .sl-image .wysiwyg.sl-caption * {
+  .s-regular, .wysiwyg.s-regular *, body, body.wysiwyg *, h1, h2, h3, h4, h1.wysiwyg *, h2.wysiwyg *, h3.wysiwyg *, h4.wysiwyg * {
     font-size: 14px;
   }
   .s-small {
@@ -937,7 +938,7 @@ div[class*=embla-slider] .embla-track .embla-slide {
     overflow-x: hidden;
     line-height: 1.2;
   }
-  .s-regular, .wysiwyg.s-regular *, body, body.wysiwyg *, h1, h2, h3, h4, h1.wysiwyg *, h2.wysiwyg *, h3.wysiwyg *, h4.wysiwyg *, .sl-wrapper .sl-close, .sl-wrapper .wysiwyg.sl-close *, .sl-wrapper .sl-navigation button.sl-next, .sl-wrapper .sl-navigation button.wysiwyg.sl-next *, .sl-wrapper .sl-navigation button.sl-prev, .sl-wrapper .sl-navigation button.wysiwyg.sl-prev *, .sl-wrapper .sl-image .sl-caption, .sl-wrapper .sl-image .wysiwyg.sl-caption * {
+  .s-regular, .wysiwyg.s-regular *, body, body.wysiwyg *, h1, h2, h3, h4, h1.wysiwyg *, h2.wysiwyg *, h3.wysiwyg *, h4.wysiwyg * {
     font-size: 18px;
   }
   .s-small {

@@ -49,7 +49,7 @@
                           $height = $meta['height'] ?? null;
                         ?>
                           <div class="embla-slide <?= $orientation ?>">
-                            <a href="<?= $fullImg; ?>" data-pswp-width="<?= $width; ?>" data-pswp-height="<?= $height; ?>">
+                            <a href="<?= $fullImg; ?>" data-pswp-width="<?= $width; ?>" data-pswp-height="<?= $height; ?>" data-caption=<?= $img['caption']; ?>>
                               <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
                                 'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
                               ]) ?>
@@ -64,7 +64,7 @@
                 <div class="artist-texts spacing-b-6">
                   <h2 class="artist-title m-hidden"><?= $artist->post_title ?></h2>
                   <?php if ($artist->file): ?>
-                    <a href="<?= $artist->file['url'] ?>" class="artist-download underlined">Download PDF</a>
+                    <a href="<?= $artist->file['url'] ?>" class="artist-download underlined" target="_blank">Download PDF</a>
                   <?php endif; ?>
                   <div class="artist-bio spacing-t-2">
                     <?= $artist->post_content ?>
