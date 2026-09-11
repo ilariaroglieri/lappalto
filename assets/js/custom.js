@@ -97,13 +97,13 @@ function initLightbox() {
     pinchToClose: false,
     closeOnVerticalDrag: false,
     showHideAnimationType: 'fade',
+    tapAction: 'none',
     bgOpacity: 1,
     counter: false,
-    arrowPrevSVG: '<span class="serif s-regular">prev</span>',
-    arrowNextSVG: '<span class="serif s-regular">next</span>',
-    closeSVG: '<span class="serif s-regular">close</span>',
+    arrowPrevSVG: '<span class="serif s-regular">Prev</span>',
+    arrowNextSVG: '<span class="serif s-regular">Next</span>',
+    closeSVG: '<span class="serif s-regular">Close</span>',
   });
-
 
   // caption
   lightbox.on('uiRegister', function() {
@@ -116,11 +116,20 @@ function initLightbox() {
       onInit: (el, pswp) => {
         lightbox.pswp.on('change', () => {
           const currSlideEl = lightbox.pswp.currSlide.data.element;
-          el.innerHTML = currSlideEl?.dataset.caption || '';
+          el.classList.remove('is-visible');
+          setTimeout(() => {
+            el.innerHTML = currSlideEl?.dataset.caption || '';
+            requestAnimationFrame(() => {
+              el.classList.add('is-visible');
+            });
+          }, 150);
         });
       }
     });
   });
+
+
+
 
   // Sincronizza Embla quando cambia slide in PhotoSwipe
   lightbox.on('change', () => {

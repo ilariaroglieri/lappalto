@@ -281,6 +281,7 @@ main {
       &.portrait {
         img {
           object-fit: cover;
+          object-position: center center;
         }
       }
       img {
@@ -474,16 +475,29 @@ div[class*=embla-slider] {
   background: #fff; 
 }
 
+.pswp__preloader {
+  display: none;
+}
+
+.pswp__top-bar {
+  height: unset;
+}
+
 .pswp__button--close {
-  height: $double-spacing;
+  height: initial;
   width: auto;
+  color: $primaryColor;
   opacity: 1;
-  margin-top: $half-spacing;
+  margin-top: $spacing;
   margin-right: calc($spacing + $half-spacing/2);
 }
 
 .pswp__button--arrow {
   width: auto;
+  color: $primaryColor;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .pswp__button--arrow--prev {
@@ -494,10 +508,16 @@ div[class*=embla-slider] {
   margin-right: calc($spacing + $half-spacing/2);
 }
 
-.pswp__custom-caption {
+.pswp--ui-visible .pswp__custom-caption {
   position: fixed;
+  width: calc(100% - $double-spacing);
   margin-left: calc($spacing + $half-spacing/2);
   bottom: $spacing;
+  transition: opacity .5s ease;
+  opacity: 0;
+  &.is-visible {
+    opacity: 1;
+  }
 }
 
 

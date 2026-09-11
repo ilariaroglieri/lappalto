@@ -54,7 +54,7 @@
     <?php endif; ?>
   </div>
 
-  <img id="site_logo" src="<?= home_url();?>/wp-content/themes/lappalto-theme/assets/img/monogram_LA.svg" alt="L'appalto logo" />
+  <img id="site_logo" src="<?= get_template_directory_uri() .'/assets/img/monogram_LA.svg'?>" alt="L'appalto logo" />
 
 </main>
 

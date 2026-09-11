@@ -64,10 +64,10 @@
                       $fullImg = wp_get_original_image_url( $img['ID'], 'full');
                       $meta = wp_get_attachment_metadata($img['ID']);
                       $width = $meta['width'] ?? null;
-                      $height = $meta['height'] ?? null;
+                      $height = $meta['height'] ?? null; 
                     ?>
                       <div class="embla-slide <?= $orientation ?>">
-                        <a href="<?= $fullImg; ?>" data-pswp-width="<?= $width; ?>" data-pswp-height="<?= $height; ?>" data-caption=<?= $img['caption']; ?>>
+                        <a href="<?= $fullImg; ?>" data-pswp-width="<?= $width; ?>" data-pswp-height="<?= $height; ?>" data-caption="<?= $img['caption']; ?>" data-orientation="<?= $orientation; ?>">
                           <?= wp_get_attachment_image($img['ID'], 'medium-large', false, [
                             'sizes' => '(max-width: 640px) 100vw, (max-width: 768px) 66vw, 42vw'
                           ]) ?>

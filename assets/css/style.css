@@ -664,6 +664,7 @@ main.loaded {
 }
 #home-slider .embla-slider-home .embla-slide.portrait img {
   object-fit: cover;
+  object-position: center center;
 }
 #home-slider .embla-slider-home .embla-slide img {
   object-fit: contain;
@@ -850,16 +851,29 @@ div[class*=embla-slider] .embla-track .embla-slide {
   background: #fff;
 }
 
+.pswp__preloader {
+  display: none;
+}
+
+.pswp__top-bar {
+  height: unset;
+}
+
 .pswp__button--close {
-  height: 24px;
+  height: initial;
   width: auto;
+  color: #323232;
   opacity: 1;
-  margin-top: 6px;
+  margin-top: 12px;
   margin-right: 15px;
 }
 
 .pswp__button--arrow {
   width: auto;
+  color: #323232;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .pswp__button--arrow--prev {
@@ -870,10 +884,16 @@ div[class*=embla-slider] .embla-track .embla-slide {
   margin-right: 15px;
 }
 
-.pswp__custom-caption {
+.pswp--ui-visible .pswp__custom-caption {
   position: fixed;
+  width: calc(100% - 24px);
   margin-left: 15px;
   bottom: 12px;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+.pswp--ui-visible .pswp__custom-caption.is-visible {
+  opacity: 1;
 }
 
 @media screen and (max-width: 1440px) {
@@ -1084,9 +1104,6 @@ div[class*=embla-slider] .embla-track .embla-slide {
   }
   #site_logo {
     display: none;
-  }
-  #overlay-container {
-    z-index: 1000000;
   }
   #overlay-container .overlay-bar.w-5, #overlay-container .overlay-bar.w-1, #overlay-container .overlay-bar.w-2, #overlay-container .overlay-bar.w-3, #overlay-container .overlay-bar.w-4 {
     width: 25vw;
