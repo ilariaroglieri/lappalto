@@ -271,8 +271,9 @@ main {
 }
 
 #home-slider {
-  top:0;
-  left: calc(#{$spacing} + #{$half-spacing}/2);
+  width: calc(100% - ($spacing + $half-spacing/2));
+  top: 0;
+  left: calc($spacing + $half-spacing/2);
   z-index: -1;
   .embla-slider-home {
     .embla-slide {

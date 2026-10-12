@@ -654,8 +654,9 @@ main.loaded {
 }
 
 #home-slider {
+  width: calc(100% - 15px);
   top: 0;
-  left: calc(12px + 6px / 2);
+  left: 15px;
   z-index: -1;
 }
 #home-slider .embla-slider-home .embla-slide {
