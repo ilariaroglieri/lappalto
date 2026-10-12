@@ -340,21 +340,21 @@ function initExhibitsAccordion() {
         trigger.addEventListener('click', () => {
           const isAlreadyOpen = ex.classList.contains('open');
 
-          // Chiudi tutti e distruggi i loro Embla
+          // stop autoplay
           exhibitions.forEach(r => {
             const s = r?.querySelector('.embla-slider');
             if (r) r.classList.remove('open');
-            if (s?._embla) {
-              s._embla.destroy();
-              s._embla = null;
-              s._autoplay = null;
-            }
+            if (s?._autoplay) s._autoplay.stop();
           });
 
           // Apri questo se non era già aperto
           if (!isAlreadyOpen) {
             ex.classList.add('open');
-            initEmbla(sliderEl, { align: 'start' }, true);
+            if (!sliderEl._embla) {
+              initEmbla(sliderEl, { align: 'start' }, true);
+            } else {
+              sliderEl._autoplay?.play();
+            }
           }
         });
       });
